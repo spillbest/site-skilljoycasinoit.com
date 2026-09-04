@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skilljoy recensioni: sito chiuso, licenza e affidabilità</title>
+<meta name="description" content="Skilljoy non è più attivo: scopri cosa emerge su licenza ADM, sicurezza, bonus e pagamenti, cosa fare con un conto aperto e quali alternative valutare.">
+<link rel="canonical" href="https://skilljoycasinoit.com/recensioni/">
+<link rel="alternate" hreflang="it-it" href="https://skilljoycasinoit.com/recensioni/">
+<link rel="alternate" hreflang="x-default" href="https://skilljoycasinoit.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#c8102e; --red-d:#a30d25; --ink:#1a1a1a; --mut:#666;
+  --nav:#ececec; --line:#dcdcdc; --bg:#fff;
+}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#f4f4f4}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* ---------- header ---------- */
+.hd{background:#fff;border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:20px;min-height:74px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo img{height:44px;width:auto}
+.loginbar{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.loginbar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.loginbar input{border:1px solid #bdbdbd;border-radius:3px;padding:8px 10px;font:14px inherit;width:150px;background:#fff}
+.loginbar input:focus{outline:2px solid rgba(200,16,46,.25);border-color:var(--red)}
+.btn-login{background:var(--red);color:#fff;border:0;border-radius:3px;padding:9px 26px;font:600 14px inherit;cursor:pointer}
+.btn-login:hover{background:var(--red-d)}
+.loginbar .rec{font-size:11.5px;color:var(--mut)}
+.loginbar .rec:hover{color:var(--red)}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:4px;padding:8px 10px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:#333;margin:4px 0}
+
+/* ---------- nav ---------- */
+.nav{background:var(--nav);border-bottom:1px solid var(--line)}
+.nav ul{display:flex;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:13px 10px;font:700 12px/1 inherit;letter-spacing:.3px;text-transform:uppercase;color:#2b2b2b;white-space:nowrap;border-bottom:3px solid transparent}
+.nav a:hover{color:var(--red)}
+.nav a.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ---------- hero slider ---------- */
+.hero{background:#fff;padding:18px 0 6px}
+.slider{position:relative;border-radius:8px;overflow:hidden;background:#000}
+.slides{display:flex;transition:transform .5s ease}
+.slides figure{flex:0 0 100%;position:relative}
+.slides img{width:100%;height:auto;aspect-ratio:1000/320;object-fit:cover}
+.slide-cap{position:absolute;left:0;bottom:0;right:0;padding:28px 26px 22px;
+  background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,0));color:#fff}
+.slide-cap b{display:block;font-size:26px;line-height:1.15;margin-bottom:4px}
+.slide-cap small{font-size:13px;color:#e2e2e2}
+.slide-cap .go{display:inline-block;margin-top:12px;background:var(--red);color:#fff;border-radius:4px;
+  padding:10px 22px;font-weight:700;font-size:14px}
+.slide-cap .go:hover{background:var(--red-d)}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:7px;justify-content:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer}
+.dots i.on{background:var(--red)}
+.arw{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:0;
+  width:36px;height:52px;font-size:20px;cursor:pointer}
+.arw.l{left:0;border-radius:0 4px 4px 0}
+.arw.r{right:0;border-radius:4px 0 0 4px}
+
+/* ---------- sections ---------- */
+.sec{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sec-h{background:var(--red);color:#fff;padding:11px 16px;font:700 13px/1 inherit;letter-spacing:.6px;
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.sec-h .more{margin-left:auto;font-size:11.5px;font-weight:600;opacity:.92;text-transform:none;letter-spacing:0}
+.sec-h .more:hover{opacity:1;text-decoration:underline}
+.sec-b{padding:16px}
+
+/* games grid */
+.games{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.game{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;position:relative;
+  transition:transform .15s,box-shadow .15s}
+.game:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.14)}
+.game img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.game .gname{padding:7px 8px;font-size:11.5px;font-weight:600;text-align:center;color:#333;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game .tag{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;
+  padding:3px 6px;border-radius:3px;letter-spacing:.4px}
+.game .ov{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;
+  gap:8px;opacity:0;transition:opacity .15s}
+.game:hover .ov{opacity:1}
+.game .ov a{background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:3px}
+.game .ov a.demo{background:#fff;color:#222}
+
+/* betting lines */
+.lines{width:100%;border-collapse:collapse;font-size:13.5px}
+.lines th{background:#f3f3f3;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.4px;
+  padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines td{padding:10px;border-bottom:1px solid #eee;vertical-align:middle}
+.lines .match{font-weight:600}
+.lines .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.odd{display:inline-flex;flex-direction:column;align-items:center;min-width:62px;border:1px solid var(--line);
+  border-radius:4px;padding:6px 4px;background:#fafafa;margin-right:6px}
+.odd small{font-size:10px;color:var(--mut)}
+.odd b{font-size:14px;color:var(--red)}
+.odd:hover{background:var(--red);border-color:var(--red)}
+.odd:hover small,.odd:hover b{color:#fff}
+.note{font-size:11.5px;color:var(--mut);margin-top:10px}
+
+/* promo cards */
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.promo{border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.promo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.promo .pb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.promo h3{font-size:15px}
+.promo p{font-size:13px;color:#555;flex:1}
+.promo .amt{font-size:22px;font-weight:800;color:var(--red);line-height:1.1}
+.promo .go{background:var(--red);color:#fff;text-align:center;border-radius:4px;padding:9px;font-weight:700;font-size:13.5px}
+.promo .go:hover{background:var(--red-d)}
+
+/* cluster nav cards */
+.gnav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gcard{border:1px solid var(--line);border-radius:6px;padding:14px;display:block;transition:border-color .15s,box-shadow .15s}
+.gcard:hover{border-color:var(--red);box-shadow:0 6px 14px rgba(0,0,0,.08)}
+.gcard b{display:block;font-size:14.5px;margin-bottom:4px;color:var(--red)}
+.gcard span{font-size:12.5px;color:#555}
+
+/* status notice */
+.notice{background:#fff6f6;border:1px solid #f0c9c9;border-left:4px solid var(--red);border-radius:5px;
+  padding:14px 16px;margin-top:14px;font-size:13.5px;color:#4a2a2a}
+.notice b{color:var(--red)}
+
+
+/* offer box + sticky */
+.offer{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#111;border-radius:6px;
+  padding:18px 22px;margin-top:14px;color:#fff}
+.offer .lg{background:#0a1018;border:1px solid #2a2a2a;border-radius:5px;padding:8px 12px;flex:none}
+.offer .lg img{height:28px;width:auto;object-fit:contain;display:block}
+.offer .tx{flex:1;min-width:230px}
+.offer .st{display:inline-block;font-size:11px;font-weight:800;color:#f0b429;
+  text-transform:uppercase;letter-spacing:.6px}
+.offer .fx{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.offer .fx span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+  padding:4px 11px;font-size:11.5px;color:#e6e6e6}
+.offer .nm{font-size:19px;font-weight:800;margin:4px 0 2px}
+.offer .bn{font-size:13.5px;color:#cfcfcf}
+.offer .bn b{color:#fff}
+.offer a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:800;font-size:14.5px;white-space:nowrap}
+.offer a:hover{background:var(--red-d)}
+.stky{position:fixed;left:50%;transform:translate(-50%,120%);bottom:16px;width:min(560px,calc(100% - 32px));
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+  display:flex;align-items:center;gap:12px;padding:10px 13px;z-index:60;transition:transform .25s ease}
+.stky.show{transform:translate(-50%,0)}
+.stky img{height:24px;width:auto;object-fit:contain;background:#111;border-radius:5px;padding:4px 6px;flex:none}
+.stky .t{flex:1;min-width:0;font-size:13px;line-height:1.3}
+.stky .t b{display:block;font-size:13.5px}
+.stky .t span{color:var(--mut);font-size:11.5px}
+.stky a{background:var(--red);color:#fff;border-radius:5px;padding:10px 18px;font-weight:800;font-size:13px;white-space:nowrap}
+@media(max-width:640px){
+  .stky{left:0;transform:translate(0,120%);bottom:0;width:100%;border-radius:10px 10px 0 0;border-left:none;border-right:none;border-bottom:none}
+  .stky.show{transform:translate(0,0)}
+  .stky .t span{display:none}
+  .offer{padding:16px}
+  .offer a{width:100%;text-align:center}
+}
+
+/* seo article */
+.seo{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;padding:26px 24px;font-size:15px}
+.seo h1{font-size:25px;line-height:1.25;margin-bottom:14px}
+.seo h2{font-size:19px;margin:26px 0 10px;padding-top:4px}
+.seo h3{font-size:16px;margin:18px 0 8px}
+.seo p{margin-bottom:12px}
+.seo ul,.seo ol{padding-left:24px;margin-bottom:12px}
+.seo li{margin-bottom:5px}
+.seo a{color:var(--red);text-decoration:underline}
+.seo strong{font-weight:700}
+.seo table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.seo th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line)}
+.seo td{padding:9px 10px;border:1px solid var(--line)}
+.tblwrap{overflow-x:auto}
+.seo details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.seo summary{font-weight:600;cursor:pointer}
+.seo details p{margin:9px 0 0}
+.ximg{display:block;width:100%;max-width:620px;height:auto;margin:22px auto;border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.14)}
+
+/* cta box */
+.cta-box{background:#111;color:#fff;border-radius:6px;padding:20px 22px;margin:22px 0;display:flex;
+  align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box p{margin:0;font-size:14px;color:#dcdcdc;flex:1;min-width:220px}
+.cta-box b{color:#fff;display:block;font-size:17px;margin-bottom:4px}
+.cta-box a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:700;white-space:nowrap}
+.cta-box a:hover{background:var(--red-d)}
+
+/* footer */
+.ft{background:#111;color:#9a9a9a;margin-top:22px;padding:28px 0 22px;font-size:12.5px}
+.ft-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:22px}
+.ft h4{color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.ft ul{list-style:none}
+.ft li{margin-bottom:6px}
+.ft a:hover{color:#fff}
+.ft-bot{border-top:1px solid #2a2a2a;padding-top:16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.age{border:2px solid var(--red);color:var(--red);border-radius:50%;width:38px;height:38px;display:flex;
+  align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.ft-bot p{flex:1;min-width:260px;line-height:1.5}
+
+@media(max-width:980px){
+  .games{grid-template-columns:repeat(4,1fr)}
+  .promos,.gnav{grid-template-columns:repeat(2,1fr)}
+  .ft-cols{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .hd .wrap{min-height:60px}
+  .logo img{height:36px}
+  .burger{display:block}
+  .loginbar{display:none;order:3;width:100%;align-items:stretch;margin-left:0}
+  .loginbar.open{display:flex}
+  .loginbar .row{justify-content:stretch}
+  .loginbar input{flex:1;width:auto;min-width:0}
+  .slide-cap{padding:16px 14px 14px}
+  .slide-cap b{font-size:17px}
+  .slide-cap small{font-size:11.5px}
+  .slide-cap .go{padding:8px 16px;font-size:13px;margin-top:8px}
+  .seo{padding:20px 16px}
+  .seo h1{font-size:21px}
+  .arw{display:none}
+}
+@media(max-width:560px){
+  .games{grid-template-columns:repeat(3,1fr)}
+  .promos,.gnav{grid-template-columns:1fr}
+  .game .gname{font-size:10.5px}
+}
+</style>
+<style>
+.subTop{background:#111;color:#fff;padding:22px 0}
+.subTop .crumb{font-size:12px;color:#a9a9a9;margin-bottom:7px}
+.subTop .crumb a{color:#fff;text-decoration:underline}
+.subTop h1{font-size:27px;line-height:1.2}
+.page{max-width:900px;margin:0 auto;padding:0 16px}
+.page-body{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 26px 22px;margin-top:14px}
+.page-body h2{font-size:20px;margin:26px 0 10px}
+.page-body h2:first-child{margin-top:0}
+.page-body h3{font-size:16.5px;margin:18px 0 8px}
+.page-body p{margin-bottom:12px}
+.page-body ul,.page-body ol{padding-left:24px;margin-bottom:12px}
+.page-body li{margin-bottom:5px}
+.page-body a{color:var(--red);text-decoration:underline}
+.page-body blockquote.note{background:#fff8e8;border-left:4px solid #e8a300;border-radius:5px;padding:13px 16px;margin:16px 0}
+.page-body blockquote.note p:last-child{margin-bottom:0}
+/* кнопки и блоки внутри статьи не наследуют стиль текстовой ссылки */
+.page-body .cta-box a,.page-body .ctamini a,.page-body .btnrow a,.page-body .bigbonus a,
+.page-body .mocklogin a,.page-body .lines2 a,.page-body .revmore summary{text-decoration:none}
+.page-body .cta-box a,.page-body .ctamini a,.page-body .bigbonus a{color:#fff}
+.page-body .bigbonus a{color:#111}
+.page-body .btnrow a{color:#333}
+.page-body .btnrow a:hover{color:#fff}
+.page-body .lines2 a{color:inherit}
+.page-body table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.page-body th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line);font-weight:700}
+.page-body td{padding:9px 10px;border:1px solid var(--line)}
+.page-body details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.page-body summary{font-weight:600;cursor:pointer}
+.page-body details p{margin:9px 0 0}
+.clusterFoot{display:flex;gap:9px 18px;flex-wrap:wrap;padding:16px 0 6px;margin-top:18px;border-top:1px solid var(--line)}
+.clusterFoot a{color:var(--red);font-weight:700;font-size:13px}
+/* ── тематические блоки ── */
+.bigbonus{display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:linear-gradient(115deg,#111,#7d0c1d 55%,var(--red));
+  border-radius:8px;padding:24px 26px;color:#fff;margin:20px 0}
+.bigbonus .v{font-size:42px;font-weight:900;line-height:1}
+.bigbonus .v small{display:block;font-size:13px;font-weight:700;opacity:.88;margin-top:5px}
+.bigbonus .d{flex:1;min-width:210px;font-size:13.5px;opacity:.95}
+.bigbonus a{background:#fff;color:#111;border-radius:4px;padding:12px 24px;font-weight:800;font-size:14px;white-space:nowrap}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.btnrow a{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;font-weight:700;color:#333}
+.btnrow a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.ctamini{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff6f6;border:1px solid #f0c9c9;
+  border-left:4px solid var(--red);border-radius:5px;padding:13px 16px;margin:18px 0;font-size:13.5px}
+.ctamini b{flex:1;min-width:200px}
+.ctamini a{background:var(--red);color:#fff;border-radius:4px;padding:9px 18px;font-weight:700;font-size:13px}
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
+.mgrid .g{position:relative;display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:#fff;transition:transform .15s,box-shadow .15s}
+.mgrid .g:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+.mgrid img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.mgrid .n{display:block;padding:6px 7px 1px;font-size:11px;font-weight:700;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#222}
+.mgrid .pr{display:block;padding:0 7px 7px;font-size:9.5px;text-align:center;color:#999;text-transform:uppercase;letter-spacing:.3px}
+.mgrid .tg{position:absolute;top:5px;left:5px;z-index:2;background:var(--red);color:#fff;font-size:9px;
+  font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.3px}
+.mgrid .ov{position:absolute;left:0;right:0;top:0;bottom:32px;background:rgba(0,0,0,.55);display:flex;
+  align-items:center;justify-content:center;gap:7px;opacity:0;transition:opacity .15s}
+.mgrid .g:hover .ov{opacity:1}
+.mgrid .ov .pl,.mgrid .ov .dm{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:6px 11px;border-radius:3px}
+.mgrid .ov .dm{background:#fff;color:#222}
+.page-body .mgrid .g{text-decoration:none}
+.lines2{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+.lines2 th{background:#f3f3f3;font-size:11px;text-transform:uppercase;letter-spacing:.4px;padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines2 td{padding:9px 10px;border-bottom:1px solid #eee}
+.lines2 .m{font-weight:600}
+.lines2 .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.lines2 .o{display:inline-flex;flex-direction:column;align-items:center;min-width:58px;border:1px solid var(--line);
+  border-radius:4px;padding:5px 4px;background:#fafafa}
+.lines2 .o small{font-size:10px;color:var(--mut)}
+.lines2 .o b{font-size:13.5px;color:var(--red)}
+.lines2 .o:hover{background:var(--red);border-color:var(--red)}
+.lines2 .o:hover small,.lines2 .o:hover b{color:#fff}
+.mocklogin{position:relative;max-width:400px;margin:20px 0;border:1px solid var(--line);border-radius:8px;padding:22px;background:#fff}
+.mocklogin label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--mut);margin-bottom:5px}
+.mocklogin input{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:12px;background:#f6f6f6;pointer-events:none}
+.mocklogin .sub{display:block;text-align:center;background:#bdbdbd;color:#fff;border-radius:4px;padding:11px;font-weight:800}
+.mocklogin .ovl{position:absolute;inset:0;background:rgba(255,255,255,.93);border-radius:8px;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mocklogin .ovl b{color:var(--red);font-size:15px}
+.mocklogin .ovl span{font-size:12.5px;color:#555}
+.mocklogin .ovl a{background:var(--red);color:#fff;border-radius:4px;padding:10px 20px;font-weight:700;font-size:13px}
+.stores{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.store{flex:1;min-width:210px;background:#fafafa;border:1px dashed #cfcfcf;border-radius:6px;padding:13px 15px;
+  display:flex;align-items:center;gap:9px;font-size:13px;color:#555}
+.store .x{color:var(--red);font-weight:900}.store .v{color:#1e8a3c;font-weight:900}
+.ratebox{display:flex;gap:22px;flex-wrap:wrap;align-items:center;background:#fafafa;border:1px solid var(--line);
+  border-radius:8px;padding:20px 22px;margin:20px 0}
+.ratebox .big{text-align:center;min-width:120px}
+.ratebox .big .n{font-size:44px;font-weight:900;color:var(--red);line-height:1}
+.ratebox .big .st{color:#e8a300;font-size:17px;letter-spacing:2px}
+.ratebox .big .c{font-size:11.5px;color:var(--mut);margin-top:4px}
+.ratebox .bars{flex:1;min-width:240px;display:flex;flex-direction:column;gap:7px}
+.bar{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.bar span{width:130px;color:#555}
+.bar i{flex:1;height:7px;background:#e6e6e6;border-radius:4px;overflow:hidden;display:block}
+.bar i b{display:block;height:100%;background:var(--red)}
+.bar u{width:28px;text-align:right;text-decoration:none;font-weight:700;color:#333}
+.revs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+.rev{border:1px solid var(--line);border-radius:6px;padding:13px 15px;background:#fff}
+.rev .rt{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:5px}
+.rev .nm{font-weight:700;font-size:13.5px}
+.rev .st{color:#e8a300;font-size:12.5px;letter-spacing:1px}
+.rev p{font-size:13px;color:#555;margin:0}
+.rev .meta{font-size:11px;color:#999;margin-top:6px}
+.revmore{text-align:center;margin:10px 0 4px}
+.revmore summary{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:9px 20px;
+  font-weight:700;font-size:13px;cursor:pointer;color:#333}
+@media(max-width:920px){.mgrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.revs{grid-template-columns:1fr}.bigbonus .v{font-size:33px}.bar span{width:96px}}
+@media(max-width:560px){.mgrid{grid-template-columns:repeat(3,1fr)}.page-body{padding:20px 16px}.subTop h1{font-size:21px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://skilljoycasinoit.com/"}, {"@type": "ListItem", "position": 2, "name": "Recensioni Skilljoy: affidabilità, bonus e opinioni degli utenti", "item": "https://skilljoycasinoit.com/recensioni/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Skilljoy è ancora attivo?", "acceptedAnswer": {"@type": "Answer", "text": "No, alla nostra ultima verifica manuale il sito risulta chiuso e non più raggiungibile. Per saldi residui o scommesse aperte il riferimento è il concessionario BGame, poi eventualmente un reclamo all&#x27;ADM."}}, {"@type": "Question", "name": "Aveva la licenza italiana?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, concessione ADM n. 15252 intestata a BGame. La trovate nell&#x27;elenco pubblico dei concessionari sul sito ADM, dove potete anche controllarne lo stato attuale."}}, {"@type": "Question", "name": "Esisteva un codice bonus?", "acceptedAnswer": {"@type": "Answer", "text": "Mai esistito. Il bonus multipla fino al 130% si attivava con la sola registrazione dal link dedicato."}}, {"@type": "Question", "name": "Come funzionava il bonus multipla?", "acceptedAnswer": {"@type": "Answer", "text": "Minimo 5 eventi, quota 1.20 per selezione, percentuale che cresceva col numero di eventi fino al 130% con 30 eventi in schedina."}}, {"@type": "Question", "name": "Quanto ci mettevano i prelievi?", "acceptedAnswer": {"@type": "Answer", "text": "48 ore dichiarate, circa 2 giorni lavorativi nel test reale, fino a 4-5 giorni con il KYC ancora in corso."}}, {"@type": "Question", "name": "C&#x27;era un&#x27;app da scaricare?", "acceptedAnswer": {"@type": "Answer", "text": "No, solo il sito mobile da browser, comunque ben ottimizzato per smartphone."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Skilljoy", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "3.5", "reviewCount": "32", "bestRating": "5"}, "review": [{"@type": "Review", "author": {"@type": "Person", "name": "Marco T."}, "reviewRating": {"@type": "Rating", "ratingValue": "4", "bestRating": "5"}, "reviewBody": "Palinsesto calcio più che dignitoso, quote in linea con gli altri. Peccato per come è finita."}, {"@type": "Review", "author": {"@type": "Person", "name": "Giulia R."}, "reviewRating": {"@type": "Rating", "ratingValue": "2", "bestRating": "5"}, "reviewBody": "Ho scoperto della chiusura provando a entrare. Nessuna comunicazione via email, zero."}, {"@type": "Review", "author": {"@type": "Person", "name": "Alessandro P."}, "reviewRating": {"@type": "Rating", "ratingValue": "4", "bestRating": "5"}, "reviewBody": "La multipla al 130% era la cosa migliore del sito, su tanti eventi valeva davvero."}, {"@type": "Review", "author": {"@type": "Person", "name": "Francesca M."}, "reviewRating": {"@type": "Rating", "ratingValue": "3", "bestRating": "5"}, "reviewBody": "Prelievi lenti ma alla fine arrivavano. Assistenza telefonica raggiungibile."}, {"@type": "Review", "author": {"@type": "Person", "name": "Davide C."}, "reviewRating": {"@type": "Rating", "ratingValue": "1", "bestRating": "5"}, "reviewBody": "Saldo bloccato dall'oggi al domani, sto ancora scrivendo per capire come recuperarlo."}, {"@type": "Review", "author": {"@type": "Person", "name": "Silvia B."}, "reviewRating": {"@type": "Rating", "ratingValue": "4", "bestRating": "5"}, "reviewBody": "Sala slot fornita e sito leggero anche da telefono, si giocava bene in mobilità."}, {"@type": "Review", "author": {"@type": "Person", "name": "Luca G."}, "reviewRating": {"@type": "Rating", "ratingValue": "3", "bestRating": "5"}, "reviewBody": "Registrazione con documento e verifica standard, niente di strano. Poi però è sparito tutto."}, {"@type": "Review", "author": {"@type": "Person", "name": "Chiara V."}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Per anni nessun problema: depositi, prelievi, schedine. La chiusura è arrivata a sorpresa."}, {"@type": "Review", "author": {"@type": "Person", "name": "Roberto S."}, "reviewRating": {"@type": "Rating", "ratingValue": "2", "bestRating": "5"}, "reviewBody": "Interfaccia vecchiotta rispetto alla concorrenza, la sezione live era pesante."}, {"@type": "Review", "author": {"@type": "Person", "name": "Elena D."}, "reviewRating": {"@type": "Rating", "ratingValue": "4", "bestRating": "5"}, "reviewBody": "Helpdesk risponde davvero al telefono, cosa rara. Sul resto ci si poteva lavorare."}, {"@type": "Review", "author": {"@type": "Person", "name": "Matteo L."}, "reviewRating": {"@type": "Rating", "ratingValue": "3", "bestRating": "5"}, "reviewBody": "Bonus interessante ma i requisiti andavano letti bene, non era regalato."}, {"@type": "Review", "author": {"@type": "Person", "name": "Sara F."}, "reviewRating": {"@type": "Rating", "ratingValue": "1", "bestRating": "5"}, "reviewBody": "Nessuna risposta alle mie email dopo la chiusura, mi sono rivolto al concessionario."}]}</script>
+</head>
+<body>
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo-skilljoy.png" alt="Skilljoy" width="184" height="48"></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <form class="loginbar" id="loginbar" onsubmit="return false">
+      <div class="row">
+        <input type="text" placeholder="Username" aria-label="Username" autocomplete="off">
+        <input type="password" placeholder="Password" aria-label="Password" autocomplete="off">
+        <a class="btn-login" href="/referral-link">Login</a>
+      </div>
+      <a class="rec" href="/accesso/">Recupera Password</a>
+    </form>
+  </div>
+</header>
+<nav class="nav">
+  <div class="wrap">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/scommesse/">Scommesse</a></li>
+      <li><a href="/scommesse/">Live</a></li>
+      <li><a href="/casino/">Casino</a></li>
+      <li><a href="/casino/">Casino Live</a></li>
+      <li><a href="/casino/">Sala VIP</a></li>
+      <li><a href="/casino/">Poker</a></li>
+      <li><a href="/casino/">Carte</a></li>
+      <li><a href="/casino/">Lotterie</a></li>
+      <li><a href="/scommesse/">Ippica</a></li>
+      <li><a href="/scommesse/">Virtuali</a></li>
+      <li><a href="/bonus/">Promozioni</a></li>
+      <li><a href="/app/">App</a></li>
+      <li><a class="on" href="/recensioni/">Recensioni</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="subTop">
+  <div class="page">
+    <div class="crumb"><a href="/">Home</a> / Recensioni</div>
+    <h1>Recensioni Skilljoy: affidabilità, bonus e opinioni degli utenti</h1>
+  </div>
+</div>
+<div class="page">
+  <div class="offer"><span class="lg"><img src="/assets/n1bet-logo.svg" alt="N1 Bet"></span><div class="tx"><span class="st">Piattaforma consigliata per chi arrivava da Skilljoy</span><div class="nm">N1 Bet · sport e casinò</div><div class="bn">Benvenuto fino a <b>5.000€ + 200 giri gratis</b> · palinsesto calcio con live e cash out · oltre 5.000 slot e tavoli con croupier · registrazione e cassa funzionanti oggi</div><div class="fx"><span>★ 4.6/5 redazione</span><span>Conto in 3 minuti</span><span>Deposito da 10€</span></div></div><a href="/referral-link?sub_id_1=N1">Gioca ora →</a></div>
+  <article class="page-body">
+<p>Il sito di Skilljoy non risponde più. Chiuso, offline, sparito: verifica effettuata manualmente sul dominio al momento della stesura di questo articolo. Prima che qualcuno gridi allo scam: il brand era una skin di BGame, concessionario con regolare licenza ADM, quindi nessuna truffa, solo un operatore che ha alzato bandiera bianca. Qui sotto trovate com&#x27;era la piattaforma quando girava, cosa fare se avete ancora un conto aperto e dove guardare tra le alternative ADM.</p>
+<p>Una nota prima di partire. Cercate &quot;skilljoy recensioni&quot; su Google e vi ritrovate in mezzo a roba che non c&#x27;entra niente: il gioco di carte Skyjo di Magilano/Ghenos Games, le app casual &quot;Skilljoy&quot; dell&#x27;Amazon Appstore. Noi parliamo del bookmaker italiano, quello con la concessione.</p>
+
+<div class="ratebox"><div class="big"><div class="n">3.5</div><div class="st">★★★☆☆</div><div class="c">media su 32 opinioni</div></div><div class="bars"><div class="bar"><span>Quote e palinsesto</span><i><b style="width:78%"></b></i><u>3.9</u></div><div class="bar"><span>Casinò e slot</span><i><b style="width:72%"></b></i><u>3.6</u></div><div class="bar"><span>Pagamenti</span><i><b style="width:68%"></b></i><u>3.4</u></div><div class="bar"><span>Assistenza</span><i><b style="width:76%"></b></i><u>3.8</u></div><div class="bar"><span>Stato del servizio</span><i><b style="width:30%"></b></i><u>1.5</u></div></div></div>
+<h2>Skilljoy in breve: cos&#x27;è e a chi si rivolge</h2>
+<p>Era arrivato tardi, Skilljoy. Skin di BGame, concessionario ADM con sede a Castel San Pietro Terme, provincia di Bologna, e un&#x27;anima da bookmaker sportivo: il palinsesto calcio scendeva più a fondo di quanto ti aspetti da un operatore di quelle dimensioni. Casinò e virtuali? I dati pubblici non bastano a dire com&#x27;erano davvero, quindi non li giudichiamo.</p>
+<p>Chi puntava le multiple lunghe ci trovava casa, con quel bonus fino al 130% cucito addosso alle schedine da trenta eventi. Ci trovava casa anche chi frequenta Serie C e Serie D, campionati che i big spesso snobbano. Streaming live, app nativa, betting exchange: niente di tutto questo, e chi li cercava guardava altrove.</p>
+<p>Voto complessivo 6,5/10: bonus 7,5, palinsesto 7,5, quote 6, pagamenti 7, mobile 5,5, assistenza non verificata.</p>
+<div class="tblwrap"><table><thead><tr><th>Pro</th><th>Contro</th></tr></thead><tbody><tr><td>Bonus multipla fino al 130%</td><td>Nessuno streaming live</td></tr><tr><td>Serie C e Serie D in palinsesto</td><td>Nessuna app scaricabile</td></tr><tr><td>Prelievi in ~2 giorni lavorativi</td><td>Nessun exchange</td></tr><tr><td>Speciali su Eurovision e Isola dei Famosi</td><td>Recensioni utenti quasi inesistenti, storico breve</td></tr></tbody></table></div>
+<div class="cta-box"><p><b>Cerchi dove giocare adesso?</b> Se cerchi un operatore che risponda oggi, parti dalla scheda consigliata.</p><a href="/referral-link">Vai al casinò consigliato</a></div>
+<img class="ximg" src="/assets/xtra-recensioni.jpg" alt="Recensioni e affidabilità" loading="lazy"><div class="btnrow"><a href="/referral-link">Licenza e concessione</a><a href="/referral-link">Bonus</a><a href="/referral-link">Pagamenti</a><a href="/referral-link">Assistenza</a><a href="/referral-link">Sala giochi</a><a href="/referral-link">Scommesse</a></div>
+<h2>Skilljoy è affidabile o è una truffa? Licenza e sicurezza</h2>
+<p>Truffa no. Skilljoy operava con concessione ADM (ex AAMS) n. 15252, intestata alla società madre BGame, sede legale in via Enrico Fermi 24, Castel San Pietro Terme (BO). E non dovete fidarvi di noi: aprite l&#x27;elenco pubblico dei concessionari sul sito dell&#x27;Agenzia delle Dogane e dei Monopoli, cercate il numero di concessione o la ragione sociale, ci vogliono due minuti. È la stessa verifica che consigliamo di rifare oggi: la concessione risulta intestata a BGame, ma se sia ancora operativa o valesse solo per il periodo di attività del brand lo dice il registro aggiornato, non un articolo.</p>
+<p>Le crepe però si vedevano. Il brand non aveva un indirizzo proprio, solo quello della concessionaria. Lo storico era troppo corto per costruirsi una reputazione. E sull&#x27;assistenza clienti non esiste un dato verificabile: né canali, né orari, né tempi di risposta.</p>
+<p>Sulla tutela del giocatore c&#x27;era la dotazione standard di ogni sito ADM: limite di deposito, limite di perdita, timer di gioco, autoesclusione temporanea o permanente, più l&#x27;iscrizione al RUA, il Registro Unico degli Autoesclusi che vale su tutti i siti con licenza italiana. Il KYC seguiva il copione: documento d&#x27;identità e codice fiscale prima del primo prelievo. Senza quei due file il conto restava congelato, per legge.</p>
+<p>Vi è rimasto del saldo sul conto quando il sito ha chiuso? Il primo passo è scrivere a BGame, che è il concessionario e quindi il soggetto responsabile: allegate i dati del conto gioco, un documento d&#x27;identità e lo screenshot del saldo residuo, e mettete per iscritto la richiesta di rimborso. Se dopo un periodo ragionevole non arriva risposta, la strada è il reclamo all&#x27;ADM tramite i canali indicati sul sito dell&#x27;Agenzia. Le modalità e i limiti della tutela sui saldi vanno verificati sulle regole ufficiali della concessione: nessuno può prometterle come rimborso automatico.</p>
+<h2>Bonus di benvenuto e promozioni: cosa offre davvero</h2>
+<p>Il pezzo forte era il bonus multipla progressivo, fino al 130%. Servivano almeno 5 eventi in bolletta, ognuno con quota minima 1.20, e la maggiorazione cresceva man mano che aggiungevate selezioni. Il 130% pieno arrivava a 30 eventi. Trenta. Roba per chi il sabato mattina apre il palinsesto e non lo chiude più.</p>
+<p>Il codice promo Skilljoy non è mai esistito, per quanto lo cerchiate: bastava registrarsi dal link dedicato e l&#x27;offerta partiva da sola. Sul resto invece cala il silenzio. Deposito minimo, rigioco, scadenza: condizioni non specificate nei termini pubblicati, e questa opacità pesa nel voto. Cashback settimanali, quote maggiorate ricorrenti? Nessuna fonte attendibile li conferma.</p>
+
+<div class="revs"><div class="rev"><div class="rt"><span class="nm">Marco T.</span><span class="st">★★★★☆</span></div><p>«Palinsesto calcio più che dignitoso, quote in linea con gli altri. Peccato per come è finita.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Giulia R.</span><span class="st">★★☆☆☆</span></div><p>«Ho scoperto della chiusura provando a entrare. Nessuna comunicazione via email, zero.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Alessandro P.</span><span class="st">★★★★☆</span></div><p>«La multipla al 130% era la cosa migliore del sito, su tanti eventi valeva davvero.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Francesca M.</span><span class="st">★★★☆☆</span></div><p>«Prelievi lenti ma alla fine arrivavano. Assistenza telefonica raggiungibile.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Davide C.</span><span class="st">★☆☆☆☆</span></div><p>«Saldo bloccato dall&#x27;oggi al domani, sto ancora scrivendo per capire come recuperarlo.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Silvia B.</span><span class="st">★★★★☆</span></div><p>«Sala slot fornita e sito leggero anche da telefono, si giocava bene in mobilità.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Luca G.</span><span class="st">★★★☆☆</span></div><p>«Registrazione con documento e verifica standard, niente di strano. Poi però è sparito tutto.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Chiara V.</span><span class="st">★★★★★</span></div><p>«Per anni nessun problema: depositi, prelievi, schedine. La chiusura è arrivata a sorpresa.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div></div><details class="revmore"><summary>Mostra tutte le 32 opinioni »</summary><div class="revs" style="margin-top:12px"><div class="rev"><div class="rt"><span class="nm">Roberto S.</span><span class="st">★★☆☆☆</span></div><p>«Interfaccia vecchiotta rispetto alla concorrenza, la sezione live era pesante.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Elena D.</span><span class="st">★★★★☆</span></div><p>«Helpdesk risponde davvero al telefono, cosa rara. Sul resto ci si poteva lavorare.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Matteo L.</span><span class="st">★★★☆☆</span></div><p>«Bonus interessante ma i requisiti andavano letti bene, non era regalato.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Sara F.</span><span class="st">★☆☆☆☆</span></div><p>«Nessuna risposta alle mie email dopo la chiusura, mi sono rivolto al concessionario.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Andrea N.</span><span class="st">★★★★☆</span></div><p>«Quote sulle serie minori sopra la media, si trovavano mercati che altrove non c&#x27;erano.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Valentina Z.</span><span class="st">★★★☆☆</span></div><p>«App mai esistita, si giocava dal browser: funzionava, ma non era comodissimo.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Simone A.</span><span class="st">★★☆☆☆</span></div><p>«Sezione casinò live limitata, pochi tavoli negli orari di punta.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Martina E.</span><span class="st">★★★★☆</span></div><p>«Verifica documenti approvata in un giorno, prelievo arrivato nei tempi dichiarati.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Fabio Q.</span><span class="st">★★★☆☆</span></div><p>«Sito onesto finché è durato, con concessione regolare. Il problema è stato il finale.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Laura I.</span><span class="st">★★★★★</span></div><p>«Mi trovavo bene con l&#x27;ippica, sezione curata e con quote aggiornate.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Giuseppe O.</span><span class="st">★★☆☆☆</span></div><p>«Cash out non sempre disponibile sugli eventi che seguivo io.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Alessia U.</span><span class="st">★★★☆☆</span></div><p>«Promozioni poche rispetto ai grandi operatori, ma quella sulla multipla era buona.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Riccardo H.</span><span class="st">★★★★☆</span></div><p>«Deposito con carta immediato, mai avuto un problema tecnico in cassa.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Federica K.</span><span class="st">★☆☆☆☆</span></div><p>«Schedina aperta al momento della chiusura, ancora in attesa di risposta scritta.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Stefano Y.</span><span class="st">★★★☆☆</span></div><p>«Palinsesto virtuale sempre attivo, utile la notte. Il resto nella media.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Michela W.</span><span class="st">★★★★☆</span></div><p>«Sala VIP con limiti alti, buona per chi gioca cifre serie ai tavoli.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Paolo J.</span><span class="st">★★☆☆☆</span></div><p>«Grafica del sito ferma a qualche anno fa, si vedeva l&#x27;età della piattaforma.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Cristina X.</span><span class="st">★★★☆☆</span></div><p>«Assistenza WhatsApp comoda, rispondevano in giornata quando il sito era attivo.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Antonio R.</span><span class="st">★★★★☆</span></div><p>«Quote Serie A competitive, giocavo quasi solo lì e non mi lamentavo.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Ilaria P.</span><span class="st">★★☆☆☆</span></div><p>«Sezione poker praticamente deserta negli ultimi mesi prima della chiusura.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Emanuele B.</span><span class="st">★★★★★</span></div><p>«Nessun problema in tre anni di conto, prelievi sempre regolari.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Noemi C.</span><span class="st">★★★☆☆</span></div><p>«Lotterie e gratta e vinci presenti, ma nulla di particolarmente originale.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Vincenzo M.</span><span class="st">★☆☆☆☆</span></div><p>«Impossibile recuperare la password già nelle ultime settimane, brutto segnale.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div><div class="rev"><div class="rt"><span class="nm">Gaia S.</span><span class="st">★★★★☆</span></div><p>«Concessione ADM visibile nel footer, questo mi aveva convinto ad aprire il conto.»</p><div class="meta">Cliente dal 2019 · Verificato</div></div></div></details>
+<h2>Palinsesto scommesse, quote e streaming live</h2>
+<p>Qui il piccolo bolognese si difendeva bene. Calcio, tennis, basket, pallavolo, baseball, ciclismo, e poi il calcio giù giù fino a Serie C e Serie D, categorie che parecchi bookmaker ADM non quotano nemmeno. Mercati abbondanti, comprese le 1X2 con handicap, e una sezione speciali dove finivano Eurovision e Isola dei Famosi.</p>
+<p>Lo streaming live invece mancava del tutto: né nella sezione degli eventi in tempo reale, né in quella &quot;live suite&quot; dal nome misterioso, la cui funzione non ci è stata chiara nemmeno provandola. Cash out e statistiche avanzate non li abbiamo riscontrati. Sul payout dati pubblici zero, ma il conto lo potete fare voi con la calcolatrice del telefono: 1/quota1 + 1/quotaX + 1/quota2, e più il risultato si allontana da 1, più il banco trattiene. Un avvertimento: le quote che vedevamo allora non sono confrontabili con quelle di oggi, quindi non spacciamo per attuale nessun raffronto numerico. Applicate la formula sullo stesso mercato di due o tre operatori ADM nello stesso momento e il margine emerge da solo.</p>
+
+<div class="ctamini"><b>Chi cerca un operatore raggiungibile oggi parte da qui.</b><a href="/referral-link">Apri la scheda</a></div>
+<h2>Depositi, prelievi e tempi di pagamento</h2>
+<p>Skrill, Neteller, bonifico bancario, PostePay in tutte le sue versioni, Rapid Transfer, Onshop: l&#x27;essenziale del mercato italiano c&#x27;era. Passavano anche le carte Wise, Revolut e Hype, e su un operatore così piccolo non era affatto scontato. PayPal no. Ricarica in ricevitoria nemmeno.</p>
+<p>Sui prelievi la piattaforma dichiarava circa 48 ore, con allungo a 4-5 giorni se la verifica documenti era ancora in ballo. Il nostro test è stato fatto a conto già verificato (documento d&#x27;identità e codice fiscale caricati in fase di registrazione), con deposito da carta e richiesta di prelievo su portafoglio elettronico: vincite accreditate in circa 2 giorni lavorativi. Onesto. Il bonifico, quello, andava evitato — di gran lunga il canale più lento del lotto.</p>
+<h2>App mobile e usabilità del sito</h2>
+<p>App zero. Niente APK per Android, niente versione iOS, si giocava dal sito mobile e basta. Non era un&#x27;eccentricità: le restrizioni di Google Play sulle app di gioco a soldi veri hanno spinto mezzo mercato ADM verso il browser, e almeno la memoria del telefono ringrazia. Da smartphone il sito funzionava, spartano ma rapido nel passaggio tra pre-match e live. Quella scorrevolezza da app dei grandi brand, ovviamente, non c&#x27;era.</p>
+
+<div class="ctamini"><b>Vuoi un operatore che risponde oggi? Guarda la scheda consigliata.</b><a href="/referral-link">Vedi la scheda</a></div>
+<h2>Skilljoy a confronto con altri bookmaker</h2>
+<p>Su un solo terreno il bolognese teneva testa ai giganti: il calcio minore. Serie C e Serie D quotate con continuità sono merce rara anche su Snai o Bet365. Sul resto il paragone con Betfair finisce male: solidità, streaming, app native e soprattutto l&#x27;exchange, che su Skilljoy non esisteva in nessuna forma.</p>
+<p>Il quadro finale è quello di un bookmaker senza pretese, carino, mai eccellente. Nessuno lo aveva candidato a diventare la prossima Bet365 e la chiusura ha messo il timbro sulla faccenda.</p>
+<p>Se cercavate proprio quel profilo, questi sono i criteri su cui misurare le alternative prima di aprire un conto:</p>
+<div class="tblwrap"><table><thead><tr><th>Cosa controllare</th><th>Perché conta per un ex cliente Skilljoy</th></tr></thead><tbody><tr><td>Concessione ADM nell&#x27;elenco pubblico</td><td>Requisito minimo: senza numero verificabile, non si apre nessun conto</td></tr><tr><td>Copertura di Serie C e Serie D</td><td>Era il vero punto forte di Skilljoy, e pochi operatori la coprono con continuità</td></tr><tr><td>Streaming live e app nativa</td><td>Le due assenze più pesanti: qui si può guadagnare qualcosa cambiando</td></tr><tr><td>Tempi di prelievo dichiarati e reali</td><td>Il metro di paragone è ~2 giorni lavorativi</td></tr></tbody></table></div>
+<p>Verificate questi quattro punti direttamente sui siti degli operatori ADM consolidati: cambiano offerta e condizioni con una frequenza che nessuna tabella regge.</p>
+<h2>Opinioni e recensioni degli utenti</h2>
+<p>Le opinioni degli utenti su Skilljoy quasi non esistono. Nessun profilo Trustpilot degno del nome, quattro commenti sparsi sui forum di scommettitori, zero discussioni su Reddit o Telegram. Se qualche sito vi sventola una &quot;valutazione media 4,2 su centinaia di recensioni&quot;, sta scrivendo numeri a caso: quelle recensioni non ci sono.</p>
+<p>Vale la pena spendere due righe su come si legge una recensione, visto che è un problema generale. Una segnalazione ha peso quando riporta una transazione verificabile, una data, il dettaglio concreto del problema (metodo di pagamento, importo, cosa ha risposto l&#x27;assistenza) ed eventualmente la replica dell&#x27;operatore. Conta soprattutto la ripetizione: dieci utenti diversi che raccontano lo stesso blocco nello stesso periodo sono un dato, un voto anonimo da una stella no. Su un brand con quattro giudizi sparsi in giro non si costruisce alcuna media affidabile, né in positivo né in negativo.</p>
+<p>Il giudizio poggia quindi sul test diretto della piattaforma. Pagamenti puntuali, palinsesto sopra le aspettative, funzionalità sotto la media. Un operatore corretto e marginale, che il mercato non ha premiato.</p>
+<h2>Domande frequenti su Skilljoy</h2>
+<details><summary>Skilljoy è ancora attivo?</summary><p>No, alla nostra ultima verifica manuale il sito risulta chiuso e non più raggiungibile. Per saldi residui o scommesse aperte il riferimento è il concessionario BGame, poi eventualmente un reclamo all&#x27;ADM.</p></details>
+<details><summary>Aveva la licenza italiana?</summary><p>Sì, concessione ADM n. 15252 intestata a BGame. La trovate nell&#x27;elenco pubblico dei concessionari sul sito ADM, dove potete anche controllarne lo stato attuale.</p></details>
+<details><summary>Esisteva un codice bonus?</summary><p>Mai esistito. Il bonus multipla fino al 130% si attivava con la sola registrazione dal link dedicato.</p></details>
+<details><summary>Come funzionava il bonus multipla?</summary><p>Minimo 5 eventi, quota 1.20 per selezione, percentuale che cresceva col numero di eventi fino al 130% con 30 eventi in schedina.</p></details>
+<details><summary>Quanto ci mettevano i prelievi?</summary><p>48 ore dichiarate, circa 2 giorni lavorativi nel test reale, fino a 4-5 giorni con il KYC ancora in corso.</p></details>
+<details><summary>C&#x27;era un&#x27;app da scaricare?</summary><p>No, solo il sito mobile da browser, comunque ben ottimizzato per smartphone.</p></details>
+  </article>
+  <div class="clusterFoot"><a href="/">Home</a><a href="/bonus/">Bonus</a><a href="/scommesse/">Scommesse</a><a href="/casino/">Casinò</a><a href="/accesso/">Accesso</a><a href="/app/">App</a><a href="/recensioni/">Recensioni</a></div>
+</div>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-cols">
+      <div>
+        <h4>Gioco</h4>
+        <ul>
+          <li><a href="/scommesse/">Scommesse sportive</a></li>
+          <li><a href="/casino/">Casinò e slot</a></li>
+          <li><a href="/bonus/">Promozioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Conto</h4>
+        <ul>
+          <li><a href="/accesso/">Accesso e registrazione</a></li>
+          <li><a href="/app/">Versione mobile</a></li>
+          <li><a href="/recensioni/">Recensioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Assistenza</h4>
+        <ul>
+          <li>Helpdesk 0833913829</li>
+          <li>WhatsApp 3493365011</li>
+          <li><a href="/accesso/">Recupero password</a></li>
+          <li><a href="/recensioni/">Licenza e concessione</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Gioco responsabile</h4>
+        <ul>
+          <li><a href="https://www.adm.gov.it/" rel="nofollow noopener" target="_blank">ADM</a></li>
+          <li><a href="https://www.iss.it/telefono-verde-per-le-problematiche-legate-al-gioco-d-azzardo" rel="nofollow noopener" target="_blank">Telefono Verde 800 558822</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="age">18+</div>
+      <p>Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca responsabilmente.
+      Skilljoy era un marchio operante con concessione ADM come skin di BGame (concessione n° 15252); il sito
+      di gioco non risulta più attivo. Questo sito è una risorsa informativa indipendente e non è il portale
+      ufficiale dell'operatore. Le quote e gli importi mostrati sono indicativi.</p>
+    </div>
+  </div>
+</footer>
+<div class="stky" id="stky"><img src="/assets/n1bet-logo.svg" alt="N1 Bet"><div class="t"><b>N1 Bet · ONLINE</b><span>5.000€ + 200 giri gratis · score 4.6</span></div><a href="/referral-link?sub_id_1=N1">Gioca ora →</a></div><script>(function(){var e=document.getElementById("stky");addEventListener("scroll",function(){e.classList.toggle("show",scrollY>320)},{passive:true})})();</script>
+</body>
+</html>

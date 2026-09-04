@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skilljoy App: come giocare da mobile senza download</title>
+<meta name="description" content="Non esiste un’app nativa Skilljoy: scopri come giocare da browser su Android e iPhone, creare l’icona Home e accedere alle funzioni mobile.">
+<link rel="canonical" href="https://skilljoycasinoit.com/app/">
+<link rel="alternate" hreflang="it-it" href="https://skilljoycasinoit.com/app/">
+<link rel="alternate" hreflang="x-default" href="https://skilljoycasinoit.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#c8102e; --red-d:#a30d25; --ink:#1a1a1a; --mut:#666;
+  --nav:#ececec; --line:#dcdcdc; --bg:#fff;
+}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#f4f4f4}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* ---------- header ---------- */
+.hd{background:#fff;border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:20px;min-height:74px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo img{height:44px;width:auto}
+.loginbar{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.loginbar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.loginbar input{border:1px solid #bdbdbd;border-radius:3px;padding:8px 10px;font:14px inherit;width:150px;background:#fff}
+.loginbar input:focus{outline:2px solid rgba(200,16,46,.25);border-color:var(--red)}
+.btn-login{background:var(--red);color:#fff;border:0;border-radius:3px;padding:9px 26px;font:600 14px inherit;cursor:pointer}
+.btn-login:hover{background:var(--red-d)}
+.loginbar .rec{font-size:11.5px;color:var(--mut)}
+.loginbar .rec:hover{color:var(--red)}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:4px;padding:8px 10px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:#333;margin:4px 0}
+
+/* ---------- nav ---------- */
+.nav{background:var(--nav);border-bottom:1px solid var(--line)}
+.nav ul{display:flex;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:13px 10px;font:700 12px/1 inherit;letter-spacing:.3px;text-transform:uppercase;color:#2b2b2b;white-space:nowrap;border-bottom:3px solid transparent}
+.nav a:hover{color:var(--red)}
+.nav a.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ---------- hero slider ---------- */
+.hero{background:#fff;padding:18px 0 6px}
+.slider{position:relative;border-radius:8px;overflow:hidden;background:#000}
+.slides{display:flex;transition:transform .5s ease}
+.slides figure{flex:0 0 100%;position:relative}
+.slides img{width:100%;height:auto;aspect-ratio:1000/320;object-fit:cover}
+.slide-cap{position:absolute;left:0;bottom:0;right:0;padding:28px 26px 22px;
+  background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,0));color:#fff}
+.slide-cap b{display:block;font-size:26px;line-height:1.15;margin-bottom:4px}
+.slide-cap small{font-size:13px;color:#e2e2e2}
+.slide-cap .go{display:inline-block;margin-top:12px;background:var(--red);color:#fff;border-radius:4px;
+  padding:10px 22px;font-weight:700;font-size:14px}
+.slide-cap .go:hover{background:var(--red-d)}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:7px;justify-content:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer}
+.dots i.on{background:var(--red)}
+.arw{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:0;
+  width:36px;height:52px;font-size:20px;cursor:pointer}
+.arw.l{left:0;border-radius:0 4px 4px 0}
+.arw.r{right:0;border-radius:4px 0 0 4px}
+
+/* ---------- sections ---------- */
+.sec{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sec-h{background:var(--red);color:#fff;padding:11px 16px;font:700 13px/1 inherit;letter-spacing:.6px;
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.sec-h .more{margin-left:auto;font-size:11.5px;font-weight:600;opacity:.92;text-transform:none;letter-spacing:0}
+.sec-h .more:hover{opacity:1;text-decoration:underline}
+.sec-b{padding:16px}
+
+/* games grid */
+.games{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.game{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;position:relative;
+  transition:transform .15s,box-shadow .15s}
+.game:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.14)}
+.game img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.game .gname{padding:7px 8px;font-size:11.5px;font-weight:600;text-align:center;color:#333;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game .tag{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;
+  padding:3px 6px;border-radius:3px;letter-spacing:.4px}
+.game .ov{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;
+  gap:8px;opacity:0;transition:opacity .15s}
+.game:hover .ov{opacity:1}
+.game .ov a{background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:3px}
+.game .ov a.demo{background:#fff;color:#222}
+
+/* betting lines */
+.lines{width:100%;border-collapse:collapse;font-size:13.5px}
+.lines th{background:#f3f3f3;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.4px;
+  padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines td{padding:10px;border-bottom:1px solid #eee;vertical-align:middle}
+.lines .match{font-weight:600}
+.lines .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.odd{display:inline-flex;flex-direction:column;align-items:center;min-width:62px;border:1px solid var(--line);
+  border-radius:4px;padding:6px 4px;background:#fafafa;margin-right:6px}
+.odd small{font-size:10px;color:var(--mut)}
+.odd b{font-size:14px;color:var(--red)}
+.odd:hover{background:var(--red);border-color:var(--red)}
+.odd:hover small,.odd:hover b{color:#fff}
+.note{font-size:11.5px;color:var(--mut);margin-top:10px}
+
+/* promo cards */
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.promo{border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.promo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.promo .pb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.promo h3{font-size:15px}
+.promo p{font-size:13px;color:#555;flex:1}
+.promo .amt{font-size:22px;font-weight:800;color:var(--red);line-height:1.1}
+.promo .go{background:var(--red);color:#fff;text-align:center;border-radius:4px;padding:9px;font-weight:700;font-size:13.5px}
+.promo .go:hover{background:var(--red-d)}
+
+/* cluster nav cards */
+.gnav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gcard{border:1px solid var(--line);border-radius:6px;padding:14px;display:block;transition:border-color .15s,box-shadow .15s}
+.gcard:hover{border-color:var(--red);box-shadow:0 6px 14px rgba(0,0,0,.08)}
+.gcard b{display:block;font-size:14.5px;margin-bottom:4px;color:var(--red)}
+.gcard span{font-size:12.5px;color:#555}
+
+/* status notice */
+.notice{background:#fff6f6;border:1px solid #f0c9c9;border-left:4px solid var(--red);border-radius:5px;
+  padding:14px 16px;margin-top:14px;font-size:13.5px;color:#4a2a2a}
+.notice b{color:var(--red)}
+
+
+/* offer box + sticky */
+.offer{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#111;border-radius:6px;
+  padding:18px 22px;margin-top:14px;color:#fff}
+.offer .lg{background:#0a1018;border:1px solid #2a2a2a;border-radius:5px;padding:8px 12px;flex:none}
+.offer .lg img{height:28px;width:auto;object-fit:contain;display:block}
+.offer .tx{flex:1;min-width:230px}
+.offer .st{display:inline-block;font-size:11px;font-weight:800;color:#f0b429;
+  text-transform:uppercase;letter-spacing:.6px}
+.offer .fx{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.offer .fx span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+  padding:4px 11px;font-size:11.5px;color:#e6e6e6}
+.offer .nm{font-size:19px;font-weight:800;margin:4px 0 2px}
+.offer .bn{font-size:13.5px;color:#cfcfcf}
+.offer .bn b{color:#fff}
+.offer a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:800;font-size:14.5px;white-space:nowrap}
+.offer a:hover{background:var(--red-d)}
+.stky{position:fixed;left:50%;transform:translate(-50%,120%);bottom:16px;width:min(560px,calc(100% - 32px));
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+  display:flex;align-items:center;gap:12px;padding:10px 13px;z-index:60;transition:transform .25s ease}
+.stky.show{transform:translate(-50%,0)}
+.stky img{height:24px;width:auto;object-fit:contain;background:#111;border-radius:5px;padding:4px 6px;flex:none}
+.stky .t{flex:1;min-width:0;font-size:13px;line-height:1.3}
+.stky .t b{display:block;font-size:13.5px}
+.stky .t span{color:var(--mut);font-size:11.5px}
+.stky a{background:var(--red);color:#fff;border-radius:5px;padding:10px 18px;font-weight:800;font-size:13px;white-space:nowrap}
+@media(max-width:640px){
+  .stky{left:0;transform:translate(0,120%);bottom:0;width:100%;border-radius:10px 10px 0 0;border-left:none;border-right:none;border-bottom:none}
+  .stky.show{transform:translate(0,0)}
+  .stky .t span{display:none}
+  .offer{padding:16px}
+  .offer a{width:100%;text-align:center}
+}
+
+/* seo article */
+.seo{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;padding:26px 24px;font-size:15px}
+.seo h1{font-size:25px;line-height:1.25;margin-bottom:14px}
+.seo h2{font-size:19px;margin:26px 0 10px;padding-top:4px}
+.seo h3{font-size:16px;margin:18px 0 8px}
+.seo p{margin-bottom:12px}
+.seo ul,.seo ol{padding-left:24px;margin-bottom:12px}
+.seo li{margin-bottom:5px}
+.seo a{color:var(--red);text-decoration:underline}
+.seo strong{font-weight:700}
+.seo table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.seo th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line)}
+.seo td{padding:9px 10px;border:1px solid var(--line)}
+.tblwrap{overflow-x:auto}
+.seo details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.seo summary{font-weight:600;cursor:pointer}
+.seo details p{margin:9px 0 0}
+.ximg{display:block;width:100%;max-width:620px;height:auto;margin:22px auto;border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.14)}
+
+/* cta box */
+.cta-box{background:#111;color:#fff;border-radius:6px;padding:20px 22px;margin:22px 0;display:flex;
+  align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box p{margin:0;font-size:14px;color:#dcdcdc;flex:1;min-width:220px}
+.cta-box b{color:#fff;display:block;font-size:17px;margin-bottom:4px}
+.cta-box a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:700;white-space:nowrap}
+.cta-box a:hover{background:var(--red-d)}
+
+/* footer */
+.ft{background:#111;color:#9a9a9a;margin-top:22px;padding:28px 0 22px;font-size:12.5px}
+.ft-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:22px}
+.ft h4{color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.ft ul{list-style:none}
+.ft li{margin-bottom:6px}
+.ft a:hover{color:#fff}
+.ft-bot{border-top:1px solid #2a2a2a;padding-top:16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.age{border:2px solid var(--red);color:var(--red);border-radius:50%;width:38px;height:38px;display:flex;
+  align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.ft-bot p{flex:1;min-width:260px;line-height:1.5}
+
+@media(max-width:980px){
+  .games{grid-template-columns:repeat(4,1fr)}
+  .promos,.gnav{grid-template-columns:repeat(2,1fr)}
+  .ft-cols{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .hd .wrap{min-height:60px}
+  .logo img{height:36px}
+  .burger{display:block}
+  .loginbar{display:none;order:3;width:100%;align-items:stretch;margin-left:0}
+  .loginbar.open{display:flex}
+  .loginbar .row{justify-content:stretch}
+  .loginbar input{flex:1;width:auto;min-width:0}
+  .slide-cap{padding:16px 14px 14px}
+  .slide-cap b{font-size:17px}
+  .slide-cap small{font-size:11.5px}
+  .slide-cap .go{padding:8px 16px;font-size:13px;margin-top:8px}
+  .seo{padding:20px 16px}
+  .seo h1{font-size:21px}
+  .arw{display:none}
+}
+@media(max-width:560px){
+  .games{grid-template-columns:repeat(3,1fr)}
+  .promos,.gnav{grid-template-columns:1fr}
+  .game .gname{font-size:10.5px}
+}
+</style>
+<style>
+.subTop{background:#111;color:#fff;padding:22px 0}
+.subTop .crumb{font-size:12px;color:#a9a9a9;margin-bottom:7px}
+.subTop .crumb a{color:#fff;text-decoration:underline}
+.subTop h1{font-size:27px;line-height:1.2}
+.page{max-width:900px;margin:0 auto;padding:0 16px}
+.page-body{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 26px 22px;margin-top:14px}
+.page-body h2{font-size:20px;margin:26px 0 10px}
+.page-body h2:first-child{margin-top:0}
+.page-body h3{font-size:16.5px;margin:18px 0 8px}
+.page-body p{margin-bottom:12px}
+.page-body ul,.page-body ol{padding-left:24px;margin-bottom:12px}
+.page-body li{margin-bottom:5px}
+.page-body a{color:var(--red);text-decoration:underline}
+.page-body blockquote.note{background:#fff8e8;border-left:4px solid #e8a300;border-radius:5px;padding:13px 16px;margin:16px 0}
+.page-body blockquote.note p:last-child{margin-bottom:0}
+/* кнопки и блоки внутри статьи не наследуют стиль текстовой ссылки */
+.page-body .cta-box a,.page-body .ctamini a,.page-body .btnrow a,.page-body .bigbonus a,
+.page-body .mocklogin a,.page-body .lines2 a,.page-body .revmore summary{text-decoration:none}
+.page-body .cta-box a,.page-body .ctamini a,.page-body .bigbonus a{color:#fff}
+.page-body .bigbonus a{color:#111}
+.page-body .btnrow a{color:#333}
+.page-body .btnrow a:hover{color:#fff}
+.page-body .lines2 a{color:inherit}
+.page-body table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.page-body th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line);font-weight:700}
+.page-body td{padding:9px 10px;border:1px solid var(--line)}
+.page-body details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.page-body summary{font-weight:600;cursor:pointer}
+.page-body details p{margin:9px 0 0}
+.clusterFoot{display:flex;gap:9px 18px;flex-wrap:wrap;padding:16px 0 6px;margin-top:18px;border-top:1px solid var(--line)}
+.clusterFoot a{color:var(--red);font-weight:700;font-size:13px}
+/* ── тематические блоки ── */
+.bigbonus{display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:linear-gradient(115deg,#111,#7d0c1d 55%,var(--red));
+  border-radius:8px;padding:24px 26px;color:#fff;margin:20px 0}
+.bigbonus .v{font-size:42px;font-weight:900;line-height:1}
+.bigbonus .v small{display:block;font-size:13px;font-weight:700;opacity:.88;margin-top:5px}
+.bigbonus .d{flex:1;min-width:210px;font-size:13.5px;opacity:.95}
+.bigbonus a{background:#fff;color:#111;border-radius:4px;padding:12px 24px;font-weight:800;font-size:14px;white-space:nowrap}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.btnrow a{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;font-weight:700;color:#333}
+.btnrow a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.ctamini{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff6f6;border:1px solid #f0c9c9;
+  border-left:4px solid var(--red);border-radius:5px;padding:13px 16px;margin:18px 0;font-size:13.5px}
+.ctamini b{flex:1;min-width:200px}
+.ctamini a{background:var(--red);color:#fff;border-radius:4px;padding:9px 18px;font-weight:700;font-size:13px}
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
+.mgrid .g{position:relative;display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:#fff;transition:transform .15s,box-shadow .15s}
+.mgrid .g:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+.mgrid img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.mgrid .n{display:block;padding:6px 7px 1px;font-size:11px;font-weight:700;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#222}
+.mgrid .pr{display:block;padding:0 7px 7px;font-size:9.5px;text-align:center;color:#999;text-transform:uppercase;letter-spacing:.3px}
+.mgrid .tg{position:absolute;top:5px;left:5px;z-index:2;background:var(--red);color:#fff;font-size:9px;
+  font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.3px}
+.mgrid .ov{position:absolute;left:0;right:0;top:0;bottom:32px;background:rgba(0,0,0,.55);display:flex;
+  align-items:center;justify-content:center;gap:7px;opacity:0;transition:opacity .15s}
+.mgrid .g:hover .ov{opacity:1}
+.mgrid .ov .pl,.mgrid .ov .dm{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:6px 11px;border-radius:3px}
+.mgrid .ov .dm{background:#fff;color:#222}
+.page-body .mgrid .g{text-decoration:none}
+.lines2{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+.lines2 th{background:#f3f3f3;font-size:11px;text-transform:uppercase;letter-spacing:.4px;padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines2 td{padding:9px 10px;border-bottom:1px solid #eee}
+.lines2 .m{font-weight:600}
+.lines2 .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.lines2 .o{display:inline-flex;flex-direction:column;align-items:center;min-width:58px;border:1px solid var(--line);
+  border-radius:4px;padding:5px 4px;background:#fafafa}
+.lines2 .o small{font-size:10px;color:var(--mut)}
+.lines2 .o b{font-size:13.5px;color:var(--red)}
+.lines2 .o:hover{background:var(--red);border-color:var(--red)}
+.lines2 .o:hover small,.lines2 .o:hover b{color:#fff}
+.mocklogin{position:relative;max-width:400px;margin:20px 0;border:1px solid var(--line);border-radius:8px;padding:22px;background:#fff}
+.mocklogin label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--mut);margin-bottom:5px}
+.mocklogin input{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:12px;background:#f6f6f6;pointer-events:none}
+.mocklogin .sub{display:block;text-align:center;background:#bdbdbd;color:#fff;border-radius:4px;padding:11px;font-weight:800}
+.mocklogin .ovl{position:absolute;inset:0;background:rgba(255,255,255,.93);border-radius:8px;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mocklogin .ovl b{color:var(--red);font-size:15px}
+.mocklogin .ovl span{font-size:12.5px;color:#555}
+.mocklogin .ovl a{background:var(--red);color:#fff;border-radius:4px;padding:10px 20px;font-weight:700;font-size:13px}
+.stores{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.store{flex:1;min-width:210px;background:#fafafa;border:1px dashed #cfcfcf;border-radius:6px;padding:13px 15px;
+  display:flex;align-items:center;gap:9px;font-size:13px;color:#555}
+.store .x{color:var(--red);font-weight:900}.store .v{color:#1e8a3c;font-weight:900}
+.ratebox{display:flex;gap:22px;flex-wrap:wrap;align-items:center;background:#fafafa;border:1px solid var(--line);
+  border-radius:8px;padding:20px 22px;margin:20px 0}
+.ratebox .big{text-align:center;min-width:120px}
+.ratebox .big .n{font-size:44px;font-weight:900;color:var(--red);line-height:1}
+.ratebox .big .st{color:#e8a300;font-size:17px;letter-spacing:2px}
+.ratebox .big .c{font-size:11.5px;color:var(--mut);margin-top:4px}
+.ratebox .bars{flex:1;min-width:240px;display:flex;flex-direction:column;gap:7px}
+.bar{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.bar span{width:130px;color:#555}
+.bar i{flex:1;height:7px;background:#e6e6e6;border-radius:4px;overflow:hidden;display:block}
+.bar i b{display:block;height:100%;background:var(--red)}
+.bar u{width:28px;text-align:right;text-decoration:none;font-weight:700;color:#333}
+.revs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+.rev{border:1px solid var(--line);border-radius:6px;padding:13px 15px;background:#fff}
+.rev .rt{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:5px}
+.rev .nm{font-weight:700;font-size:13.5px}
+.rev .st{color:#e8a300;font-size:12.5px;letter-spacing:1px}
+.rev p{font-size:13px;color:#555;margin:0}
+.rev .meta{font-size:11px;color:#999;margin-top:6px}
+.revmore{text-align:center;margin:10px 0 4px}
+.revmore summary{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:9px 20px;
+  font-weight:700;font-size:13px;cursor:pointer;color:#333}
+@media(max-width:920px){.mgrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.revs{grid-template-columns:1fr}.bigbonus .v{font-size:33px}.bar span{width:96px}}
+@media(max-width:560px){.mgrid{grid-template-columns:repeat(3,1fr)}.page-body{padding:20px 16px}.subTop h1{font-size:21px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://skilljoycasinoit.com/"}, {"@type": "ListItem", "position": 2, "name": "App Skilljoy e versione mobile: download, compatibilità e come giocare da smartphone", "item": "https://skilljoycasinoit.com/app/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Esiste un&#x27;app Skilljoy da scaricare per Android o iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "No. Niente su Google Play né su App Store, e un APK ufficiale non è mai esistito. Si gioca dal browser del telefono, sul sito ottimizzato per mobile."}}, {"@type": "Question", "name": "Ho trovato un APK su un sito esterno: posso installarlo?", "acceptedAnswer": {"@type": "Answer", "text": "Lascia perdere. Non esistendo un&#x27;app ufficiale, qualsiasi APK con quel nome è sospetto: rischi malware o il furto delle credenziali del conto. L&#x27;unico canale sicuro è il sito dal browser."}}, {"@type": "Question", "name": "Come metto il sito sulla schermata Home del telefono?", "acceptedAnswer": {"@type": "Answer", "text": "Su iPhone apri la pagina da Safari, tocchi Condividi e poi &quot;Aggiungi alla schermata Home&quot;. Su Android apri Chrome, menu ⋮ e &quot;Aggiungi a schermata Home&quot;. Ottieni un&#x27;icona che lancia il sito con un tocco, in molti casi senza barra del browser."}}, {"@type": "Question", "name": "La versione mobile è legale in Italia?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. La piattaforma opera come skin di BGame con Concessione ADM n° 15252: gioco legale, conto in euro, tutele previste dalla normativa italiana. Accesso solo ai maggiorenni e solo dal territorio italiano."}}, {"@type": "Question", "name": "Posso depositare e prelevare dallo smartphone?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, la cassa mobile è completa: PostePay, Skrill, Neteller, Rapid Transfer, bonifico e Onshop, con carte Wise, Revolut e Hype accettate. Deposito minimo 10 €, richieste di prelievo elaborate in circa 48 ore (fino a 4-5 giorni se il KYC è in corso), massimale dichiarato 5.000 € al giorno, più i tempi di accredito del circuito che scegli."}}, {"@type": "Question", "name": "Serve un codice bonus per l&#x27;offerta di benvenuto?", "acceptedAnswer": {"@type": "Answer", "text": "No, nessun codice: le promozioni si agganciano al conto in fase di registrazione. Il bonus multipla arriva fino al 130% con schedine da almeno 5 eventi a quota minima 1.20."}}, {"@type": "Question", "name": "C&#x27;è lo streaming delle partite da mobile?", "acceptedAnswer": {"@type": "Answer", "text": "No, il video è assente sia nella sezione live sia nella live suite. Le scommesse in-play si seguono con statistiche e grafiche in tempo reale, e il consumo dati resta bassissimo."}}, {"@type": "Question", "name": "Il login con Face ID o impronta funziona?", "acceptedAnswer": {"@type": "Answer", "text": "Non in modo nativo. Però salvando le credenziali nel gestore password di Safari o Chrome lo sblocco passa dalla biometria del dispositivo, quindi il risultato che ottieni è lo stesso."}}, {"@type": "Question", "name": "Ci sono giochi di abilità come Briscola o Burraco?", "acceptedAnswer": {"@type": "Answer", "text": "Non nella forma dei tornei di carte. I giochi di abilità sono quelli in cui le tue scelte incidono sul risultato, mentre qui la componente skill si limita ai titoli arcade skill-based; il resto dell&#x27;offerta è scommesse sportive, slot e tavoli live."}}, {"@type": "Question", "name": "&quot;Skilljoy&quot; che trovo sugli store è la stessa cosa?", "acceptedAnswer": {"@type": "Answer", "text": "No. SkillJoy.org è una piattaforma di corsi gratuiti, skilljoy.me un servizio link-in-bio per creator, e lo sviluppatore omonimo sull&#x27;Amazon Appstore pubblica giochini mobile che col betting non c&#x27;entrano niente. Il bookmaker con licenza ADM non ha app su nessuno store."}}, {"@type": "Question", "name": "Cosa faccio se il sito non è più raggiungibile?", "acceptedAnswer": {"@type": "Answer", "text": "Alcune fonti segnalano una possibile chiusura della piattaforma. In quel caso il riferimento è il concessionario BGame, Concessione ADM n° 15252: la normativa italiana tutela il saldo dei giocatori anche quando una skin cessa l&#x27;attività, e la richiesta di rimborso va presentata al titolare della licenza."}}]}</script>
+</head>
+<body>
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo-skilljoy.png" alt="Skilljoy" width="184" height="48"></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <form class="loginbar" id="loginbar" onsubmit="return false">
+      <div class="row">
+        <input type="text" placeholder="Username" aria-label="Username" autocomplete="off">
+        <input type="password" placeholder="Password" aria-label="Password" autocomplete="off">
+        <a class="btn-login" href="/referral-link">Login</a>
+      </div>
+      <a class="rec" href="/accesso/">Recupera Password</a>
+    </form>
+  </div>
+</header>
+<nav class="nav">
+  <div class="wrap">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/scommesse/">Scommesse</a></li>
+      <li><a href="/scommesse/">Live</a></li>
+      <li><a href="/casino/">Casino</a></li>
+      <li><a href="/casino/">Casino Live</a></li>
+      <li><a href="/casino/">Sala VIP</a></li>
+      <li><a href="/casino/">Poker</a></li>
+      <li><a href="/casino/">Carte</a></li>
+      <li><a href="/casino/">Lotterie</a></li>
+      <li><a href="/scommesse/">Ippica</a></li>
+      <li><a href="/scommesse/">Virtuali</a></li>
+      <li><a href="/bonus/">Promozioni</a></li>
+      <li><a class="on" href="/app/">App</a></li>
+      <li><a href="/recensioni/">Recensioni</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="subTop">
+  <div class="page">
+    <div class="crumb"><a href="/">Home</a> / App</div>
+    <h1>App Skilljoy e versione mobile: download, compatibilità e come giocare da smartphone</h1>
+  </div>
+</div>
+<div class="page">
+  <div class="offer"><span class="lg"><img src="/assets/n1bet-logo.svg" alt="N1 Bet"></span><div class="tx"><span class="st">Piattaforma consigliata per chi arrivava da Skilljoy</span><div class="nm">N1 Bet · sport e casinò</div><div class="bn">Benvenuto fino a <b>5.000€ + 200 giri gratis</b> · palinsesto calcio con live e cash out · oltre 5.000 slot e tavoli con croupier · registrazione e cassa funzionanti oggi</div><div class="fx"><span>★ 4.6/5 redazione</span><span>Conto in 3 minuti</span><span>Deposito da 10€</span></div></div><a href="/referral-link?sub_id_1=N1">Gioca ora →</a></div>
+  <article class="page-body">
+<p>Cerchi l&#x27;app Skilljoy su Google Play o sull&#x27;App Store e torni a mani vuote. Non è un problema della ricerca: il bookmaker non ha mai pubblicato un&#x27;applicazione nativa, né per Android né per iPhone. Si gioca dal browser del telefono, su un sito che si ridisegna per gli schermi piccoli e porta dentro tutto quello che trovi da desktop, scommesse e casinò, cassa, upload dei documenti. Qui sotto vediamo come spremere la versione mobile, come piazzarti un&#x27;icona sulla Home che fa le veci dell&#x27;app, e cosa ti aspetta davvero su bonus, pagamenti e palinsesto.</p>
+<p>Una cosa da mettere in chiaro subito, però. Alcune fonti recenti segnalano che il sito potrebbe essere chiuso o non più raggiungibile, e tutte le cifre di questa guida arrivano dalle condizioni pubblicate dall&#x27;operatore al momento della verifica. Prima di mettere dentro un euro fai un controllo di stato: apri il dominio ufficiale e guarda se risponde, prova login e registrazione, entra in cassa e verifica che il tuo metodo sia ancora in elenco, controlla che la concessione risulti attiva negli elenchi ADM, poi leggi i termini del bonus con rollover e scadenze. Se qualcosa non torna, scrivi in live chat e chiedi conferma. Ti costa tre minuti. Fatto questo, non ti ripeto l&#x27;avvertenza a ogni paragrafo.</p>
+
+<div class="stores"><div class="store"><span class="x">✕</span> App Store — nessuna app Skilljoy pubblicata</div><div class="store"><span class="x">✕</span> Google Play — nessuna app Skilljoy pubblicata</div><div class="store"><span class="v">✓</span> Operatori attivi — si gioca dal browser o da app ufficiale</div></div>
+<h2>App Skilljoy: cosa offre la versione mobile</h2>
+<p>Non esiste un&#x27;app da scaricare. L&#x27;unico modo per giocare dallo smartphone è aprire il sito dal browser mobile, dove l&#x27;interfaccia si adatta allo schermo da sola: niente download, niente APK, nessun aggiornamento da inseguire.</p>
+<p>Dal telefono, secondo quanto dichiara l&#x27;operatore, fai le stesse cose che faresti da PC:</p>
+<ul><li>scommesse sportive pre-match e live, con bolletta, multiple e mercati con handicap</li><li>slot e tavoli con dealer dal vivo, saldi e puntate in euro</li><li>deposito e prelievo con i metodi supportati, da PostePay a Skrill</li><li>registrazione del conto e caricamento dei documenti per il KYC scattando la foto direttamente dalla fotocamera</li><li>attivazione dell&#x27;offerta di benvenuto, senza codici da digitare</li><li>limiti di gioco e autoesclusione, tutto dall&#x27;area personale</li></ul>
+<p>Sulla licenza non c&#x27;è niente da interpretare. Skilljoy è una skin di BGame, società con sede in via Enrico Fermi 24 a Castel San Pietro Terme (BO), che opera con Concessione ADM/AAMS n° 15252. Gioco legale in Italia, conto in euro, interfaccia in italiano, porta chiusa ai minorenni. La stessa copertura che vale per le altre skin del network BGame, con collegamento al Registro Unico degli Autoesclusi.</p>
+<p>Un chiarimento che nella SERP serve più di quanto sembri: quel nome se lo passano progetti che col betting non hanno niente in comune. SkillJoy.org è una piattaforma di corsi gratuiti online. Skilljoy.me è uno strumento link-in-bio per creator che vendono corsi. E sull&#x27;Amazon Appstore c&#x27;è uno sviluppatore omonimo che ha sfornato una raffica di giochini mobile, circa 81 titoli sullo stile di &quot;Transform Animal Run&quot;. Da non confondere nemmeno con Skillz, il portale eSports che si scarica via QR code. Nessuna di queste app ti porta dentro slot o quote, per quanto il nome sembri promettente.</p>
+<div class="cta-box"><p><b>Cerchi dove giocare adesso?</b> Versione mobile e app ufficiali disponibili sugli operatori in funzione.</p><a href="/referral-link">Vai al casinò consigliato</a></div>
+<img class="ximg" src="/assets/xtra-app.jpg" alt="Versione mobile" loading="lazy">
+<h2>Come scaricare e installare l&#x27;app Skilljoy su Android e iOS</h2>
+<p>Partiamo dal punto che genera più confusione: non esiste un APK ufficiale e non c&#x27;è nulla da installare dall&#x27;App Store. Non è una stranezza dell&#x27;operatore. Molti bookmaker ADM di taglia media scelgono la strada del sito mobile, perché pubblicare e mantenere un&#x27;app di gambling sugli store costa e impone vincoli che una skin difficilmente ripaga.</p>
+<p>Da qui un avviso serio. Se durante la ricerca ti imbatti in un file APK con quel nome su un sito di terze parti, non scaricarlo. Un APK di un operatore che non ha mai rilasciato app è, nella versione ottimista, una copia farlocca; nella pessimista, un veicolo per malware o per portarsi via le credenziali del tuo conto gioco. Chi ruba login e dati di pagamento lavora esattamente su chi cerca &quot;app scaricare&quot; e clicca il primo link plausibile.</p>
+<p>Il sostituto pratico esiste ed è gratis: aggiungere il sito alla schermata Home. Ottieni un&#x27;icona che apre la piattaforma con un tocco; a seconda del browser e del dispositivo l&#x27;avvio può essere a schermo intero oppure con la barra di navigazione visibile, quindi consideralo una scorciatoia comoda, non un clone esatto di un&#x27;app nativa.</p>
+<p><strong>Su iPhone e iPad (Safari):</strong></p>
+<ol><li>Apri il sito da Safari</li><li>Tocca l&#x27;icona Condividi, il quadrato con la freccia in basso al centro</li><li>Scorri e seleziona &quot;Aggiungi alla schermata Home&quot;</li><li>Conferma il nome dell&#x27;icona e tocca Aggiungi</li></ol>
+<p><strong>Su Android (Chrome):</strong></p>
+<ol><li>Apri il sito da Chrome</li><li>Tocca il menu ⋮ in alto a destra</li><li>Seleziona &quot;Aggiungi a schermata Home&quot;, oppure &quot;Installa app&quot; a seconda della versione di Chrome che hai</li><li>Conferma</li></ol>
+<p>Da quel momento tocchi l&#x27;icona e sei dentro. I vantaggi sono concreti, non consolatori: sul telefono resta solo la cache del browser invece delle centinaia di MB che si mangiano certe app di betting, nessun aggiornamento manuale perché carichi sempre l&#x27;ultima versione del sito, zero file scaricati da fonti dubbie.</p>
+<h2>Requisiti di sistema e compatibilità dei dispositivi</h2>
+<p>Una piattaforma che gira nel browser chiede pochissimo. Se il tuo telefono naviga in modo decente, regge anche Skilljoy mobile: non servono top di gamma né gigabyte liberati a fatica.</p>
+<div class="tblwrap"><table><thead><tr><th>Requisito</th><th>Cosa serve</th></tr></thead><tbody><tr><td>Dispositivo</td><td>Smartphone o tablet Android, iPhone, iPad</td></tr><tr><td>Sistema operativo</td><td>Versioni recenti di Android e iOS/iPadOS</td></tr><tr><td>Browser</td><td>Chrome, Safari, Firefox o Edge aggiornati</td></tr><tr><td>Impostazioni</td><td>JavaScript e cookie attivi</td></tr><tr><td>Connessione</td><td>4G/5G o Wi-Fi stabile</td></tr><tr><td>Spazio richiesto</td><td>Nessuna installazione, solo cache del browser</td></tr></tbody></table></div>
+<p>Sul consumo dati c&#x27;è un dettaglio che gioca a tuo favore: la piattaforma non trasmette lo streaming video degli eventi sportivi, nemmeno nella live suite, quindi ti risparmi il salasso di traffico che conosce bene chi guarda le partite dentro l&#x27;app di Bet365. Le pagine di quote live si aggiornano con poco. Il casinò live è un&#x27;altra storia: i tavoli con croupier in HD consumano come qualsiasi diretta video, e se sei sotto rete mobile con i giga contati conviene passare al Wi-Fi.</p>
+<p>L&#x27;orientamento dello schermo cambia le cose più di quanto immagini. In verticale scommesse e slot filano, con la bolletta a portata di pollice e lo scroll naturale del palinsesto; sui tavoli live gira il telefono in orizzontale, così vedi tutto il tavolo e i pulsanti di puntata senza dover indovinare.</p>
+<p>Se le pagine sembrano lente o mezze rotte, svuota la cache o prova una finestra in incognito prima di scrivere all&#x27;assistenza. Nove volte su dieci il problema muore lì.</p>
+<h2>Registrazione, login e verifica dell&#x27;account da mobile</h2>
+<p>Aprire il conto dallo smartphone segue gli stessi passaggi del desktop e il modulo è pensato per le dita, non per il mouse. Ti servono i dati anagrafici completi, il codice fiscale (obbligatorio su qualsiasi conto ADM), un&#x27;email valida, il numero di cellulare e le credenziali che scegli. Il conto deve essere intestato a chi lo usa: quello a nome del cugino si blocca in fase di verifica, senza appello.</p>
+<p>Nessun codice bonus da inserire, per fortuna. L&#x27;offerta di benvenuto si attacca automaticamente alla registrazione, quindi eviti il classico dispiacere di scoprire il campo promo vuoto quando il deposito è già andato.</p>
+<p>Per il login quotidiano bastano email o username e password. Il sito mobile non ha una biometria propria come le app native, ma il compromesso regge: salvi le credenziali nel portachiavi di Safari o nel gestore password di Chrome e lo sblocco passa comunque da Face ID o impronta a livello di dispositivo. Tocchi il campo, autorizzi col dito, sei dentro. Se hai perso la password, il reset arriva via email.</p>
+<p>Il KYC merita più attenzione del resto, perché è lì che si decide quanto aspetti i soldi. Dal telefono fotografi e carichi il documento d&#x27;identità — carta, patente o passaporto — e se richiesta una prova di indirizzo. La verifica, secondo quanto dichiarato lato casinò, viene processata in 30-60 minuti nei casi standard. Il consiglio da chi ci è passato: fai la verifica subito dopo il primo deposito. Se il KYC parte quando hai già chiesto il prelievo, i tempi di accredito si allungano fino a 4-5 giorni. Foto nitide, documento non scaduto, quattro angoli visibili e in un&#x27;ora ti sei levato il pensiero.</p>
+
+<div class="btnrow"><a href="/referral-link">Android</a><a href="/referral-link">iPhone</a><a href="/referral-link">Web app</a><a href="/referral-link">Notifiche live</a></div>
+<h2>Giochi e scommesse disponibili nella versione mobile</h2>
+<p>Il palinsesto che consulti dal telefono è identico a quello desktop, e per un operatore di seconda fascia la copertura tiene bene. Il calcio si prende la scena con una profondità che scende fino a Serie C e Serie D, dettaglio che chi segue le categorie minori apprezza, visto che parecchi concorrenti si fermano alla B. Intorno al pallone ruotano tennis, basket, pallavolo, baseball e ciclismo. E poi i mercati speciali su Eurovision e Isola dei Famosi, per chi preferisce puntare due euro sul televoto invece che sull&#x27;Over 2.5.</p>
+<p>Sui mercati calcistici l&#x27;offerta è ampia: oltre a 1X2, gol e risultati esatti trovi le varianti 1X2 con handicap, quelle che ti alzano la quota sulle favorite scontate. Le multiple si compongono dalla bolletta mobile con la stessa fluidità del PC, e le multiple sono anche il cuore del bonus principale, di cui parliamo tra poco.</p>
+<p>Il limite grosso te lo dico senza giri di parole: niente streaming live. Nessun video delle partite, né nella sezione live né nella cosiddetta live suite, quindi le scommesse in-play le segui con grafiche animate e statistiche in tempo reale. Chi è abituato a guardare il match dentro l&#x27;app del bookmaker qui si arrangia con la TV o con un secondo schermo. In compenso i dati che consumi restano pochissimi.</p>
+<p>Lato casinò, dalla versione mobile entri in slot e tavoli live. Sui giochi arcade skill-based promossi dalla piattaforma girano dati tecnici precisi: RTP predefinito 96,2%, con modalità alternative al 95% e al 97% dove abilitate, volatilità media che sale ad alta nelle impostazioni Hard o Turbo, round da 8-12 secondi (5-7 in Turbo) e puntate da 0,10 € a 50 € per round. Fai due conti sul bankroll prima di partire: con round così rapidi una sessione da venti minuti brucia molte più giocate di una slot classica, quindi la puntata unitaria va tenuta bassa e la tentazione di alzarla ignorata.</p>
+<p>Due parole su cosa siano i giochi di abilità, visto che la domanda torna spesso. Sono i titoli in cui il risultato dipende almeno in parte da come giochi tu — decisioni, tempismo, lettura della situazione — e non solo dal generatore di numeri casuali: nella tradizione italiana ci rientrano i giochi di carte da torneo come Briscola, Scopa, Burraco e il poker sportivo, mentre una slot resta puro caso. Qui la componente &quot;abilità&quot; si esaurisce nelle modalità arcade skill-based descritte sopra: chi arriva cercando i tornei di carte resta a bocca asciutta, perché questa piattaforma vive di scommesse sportive e casinò. Le sezioni disponibili al momento della verifica vanno comunque controllate direttamente nel menu del sito.</p>
+<h2>Depositi, prelievi e pagamenti da smartphone</h2>
+<p>La cassa mobile funziona senza intoppi e copre i metodi che un giocatore italiano si aspetta di trovare. Secondo le condizioni pubblicate dall&#x27;operatore i canali sono questi: PostePay in tutte le versioni della carta, Skrill e Neteller, Rapid Transfer (il bonifico istantaneo via Skrill), il bonifico bancario tradizionale e Onshop, che ti permette di ricaricare in contanti nei punti vendita convenzionati se le carte online ti mettono ansia.</p>
+<p>Accettate anche Wise, Revolut e Hype, quindi la generazione delle banche smart è coperta. PayPal, paysafecard e criptovalute invece non risultano tra i metodi confermati: non dare per scontato di trovarli, controlla in cassa prima di contarci.</p>
+<p>Il deposito minimo dichiarato è 10 €, con accredito immediato su carte ed e-wallet. Sui prelievi conviene distinguere due tempi diversi. Il primo è l&#x27;elaborazione interna della richiesta: l&#x27;operatore dichiara circa 48 ore, che le condizioni pubblicate riducono a 24 ore quando l&#x27;identità è già verificata, e che salgono a 4-5 giorni se scatta una richiesta di documentazione aggiuntiva — l&#x27;ennesimo motivo per chiudere il KYC in anticipo. Il secondo è l&#x27;accredito effettivo, che dipende dal circuito: immediato o quasi sugli e-wallet, più lento sul bonifico. Un test diretto riportato da un recensore parla di soldi in mano in circa 2 giorni lavorativi. Il massimale dichiarato è di 5.000 € al giorno.</p>
+<p>Due dritte, brevi. Evita il bonifico bancario per i prelievi se hai fretta: ai tempi dell&#x27;operatore vanno sommati quelli interbancari e ti ritrovi alla settimana piena, mentre Skrill e Neteller restano la corsia veloce. E preleva sullo stesso metodo con cui hai depositato ogni volta che puoi, perché è la prassi antiriciclaggio standard e ti risparmia le richieste di chiarimento che allungano tutto.</p>
+<p>Tutto si gestisce dal telefono senza limitazioni. La cassa mobile ha le stesse voci del desktop e la conferma via SMS o email arriva sullo stesso dispositivo che hai già in mano.</p>
+
+<div class="ctamini"><b>Le app ufficiali esistono solo per gli operatori attivi.</b><a href="/referral-link">Scarica l&#x27;app</a></div>
+<h2>Bonus e promozioni attivabili dall&#x27;app</h2>
+<p>Le promozioni si attivano da mobile esattamente come da PC: nessuna offerta è riservata al desktop. E niente codice promozionale, ripetuto qui perché è la domanda che arriva più spesso in chat. L&#x27;offerta viene agganciata al conto quando ti registri.</p>
+<p>Sulle scommesse il pezzo interessante è il bonus multipla fino al 130%. Componi una schedina con almeno 5 eventi, ognuno a quota minima 1.20, e sulla vincita scatta una maggiorazione percentuale che cresce col numero di selezioni fino al tetto del 130%, raggiungibile con 30 eventi in bolletta. Formato classico, premia chi ama le multiple lunghe. Detto tra noi, una trentina di eventi in bolletta somiglia più a una lotteria che a una scommessa, per quanto la maggiorazione faccia gola.</p>
+<p>Lato casinò le fonti affiliate riportano un pacchetto di benvenuto fino a 300 € + 50 free spins, attivabile con deposito minimo di 10 €. I termini dichiarati:</p>
+<ul><li>rollover 35x sull&#x27;importo bonus</li><li>puntata massima con bonus attivo 5 €, che sulle slot scende a 0,10 € per giro</li><li>bonus valido 7 giorni, free spins che scadono in 72 ore</li><li>contributo dei tavoli live al rollover pari a 0%, quindi roulette e blackjack dal vivo non sbloccano un centesimo</li></ul>
+<p>Quel 35x in 7 giorni è la riga da rileggere due volte. Su 300 € di bonus significa rigiocare 10.500 € in una settimana, ritmo che sostiene solo chi macina volume con puntate consistenti. Se depositi 20 o 30 € per divertirti, fai i conti sulla quota proporzionale del bonus e dormi meglio.</p>
+<p>Circola anche una promo da 350 giri gratuiti senza requisiti di scommessa su titoli come Eye of Horus e Fishin&#x27; Frenzy. L&#x27;assenza di rollover la renderebbe una delle offerte più pulite in circolazione ed è esattamente per questo che va cercata in cassa: le promo di questo tipo compaiono e spariscono senza preavviso.</p>
+<p>Da mobile monitori tutto dall&#x27;area personale, dove saldo reale e saldo bonus restano separati. Dai un&#x27;occhiata all&#x27;avanzamento del rollover prima di ogni sessione, così non giochi a vuoto convinto di stare sbloccando qualcosa.</p>
+<h2>Sicurezza, gioco responsabile e assistenza clienti mobile</h2>
+<p>La base è la Concessione ADM n° 15252 intestata a BGame: connessione cifrata, fondi dei giocatori separati da quelli societari, controlli sull&#x27;equità dei giochi, identificazione obbligatoria dei clienti. Giocare dal telefono non sposta niente su questo fronte, perché la certificazione riguarda il sito e non il dispositivo che tieni in mano.</p>
+<p>Due accortezze restano in carico a te. La prima: login e operazioni di cassa su Wi-Fi pubblici non protetti — bar, stazioni, aeroporti — sono un rischio inutile, e per depositi e prelievi tanto vale usare la rete dati. La seconda: il conto ADM funziona solo dal territorio italiano, quindi se ti colleghi dall&#x27;estero l&#x27;accesso può risultare limitato. È legge, non capriccio dell&#x27;operatore.</p>
+<p>Gli strumenti di gioco responsabile si impostano tutti dall&#x27;area personale mobile:</p>
+<ul><li>limite di deposito, il più efficace perché agisce a monte</li><li>limite di perdita, che blocca la sessione quando tocchi la soglia</li><li>timer di gioco, utile davvero con round da 8-12 secondi che fanno evaporare la cognizione del tempo</li><li>autoesclusione temporanea o permanente; quella permanente passa dal Registro Unico degli Autoesclusi e vale su tutti i siti ADM</li></ul>
+<p>Impostare un limite di deposito ti prende due minuti. Alzarlo invece prevede tempi di attesa, e il sistema è costruito così di proposito, per mettere un cuscino tra te e i colpi di testa.</p>
+<p>L&#x27;assistenza da mobile passa soprattutto dalla live chat, con tempo di risposta dichiarato sotto il minuto e operatori in italiano. Per le questioni documentali — KYC, contestazioni, chiusura del conto — usa l&#x27;email: è più lenta ma ti lascia una traccia scritta, e quando c&#x27;è di mezzo il saldo la traccia scritta vale più della rapidità. La chat si apre dall&#x27;icona nella versione mobile, senza dover scovare pagine di contatto sepolte nel footer. Se il sito dovesse restare irraggiungibile a lungo, il riferimento è il concessionario BGame: per la normativa ADM il saldo dei giocatori è tutelato anche quando una skin cessa di operare, e la richiesta di rimborso si indirizza al titolare della licenza.</p>
+<h2>App vs sito mobile: pro, contro e prestazioni</h2>
+<p>Vale la pena rimpiangere un&#x27;app nativa che non c&#x27;è? Mettiamo tutto in fila.</p>
+<div class="tblwrap"><table><thead><tr><th>Aspetto</th><th>Sito mobile Skilljoy</th><th>App nativa (media dei bookmaker ADM)</th></tr></thead><tbody><tr><td>Download e installazione</td><td>Non serve nulla</td><td>50–300 MB dallo store</td></tr><tr><td>Aggiornamenti</td><td>Automatici, sempre ultima versione</td><td>Manuali o in background</td></tr><tr><td>Spazio in memoria</td><td>Solo cache del browser</td><td>Cresce nel tempo</td></tr><tr><td>Notifiche push</td><td>No</td><td>Sì (quote, promo, esiti)</td></tr><tr><td>Biometria</td><td>Via gestore password del browser</td><td>Integrata nell&#x27;app</td></tr><tr><td>Streaming live</td><td>Assente (limite della piattaforma)</td><td>Presente sui big (Bet365, Betfair)</td></tr><tr><td>Rischio APK falsi</td><td>Nullo: non c&#x27;è nulla da scaricare</td><td>Basso ma esistente</td></tr></tbody></table></div>
+<p>Il browser vince su tre cose misurabili: niente installazione sul telefono, nessun aggiornamento da approvare, comportamento identico su Android e iPhone senza due versioni da mantenere. Con l&#x27;icona sulla Home l&#x27;uso quotidiano si avvicina molto a quello di un&#x27;app. Le pagine sono leggere e la batteria scende come durante una normale navigazione, tranne quando apri il casinò live in HD, che ti scalda il telefono come qualsiasi diretta video.</p>
+<p>Gli svantaggi sono due e pesano diversamente. Il primo lo senti ogni giorno: senza notifiche push nessuno ti avvisa del cash out disponibile, dell&#x27;esito della schedina o della promo lampo, quindi devi aprire il sito per sapere come sta andando la multipla. Il secondo è di confronto. Chi arriva dalle app di Bet365 o Betfair troverà qui meno rifiniture, e diciamolo chiaramente: questo operatore non gioca quel campionato, Betfair per dire offre anche il betting exchange, che qui non esiste nemmeno come idea. Il paragone onesto è con gli altri operatori ADM di fascia media, dove il sito mobile fatto bene è la regola.</p>
+<p>Se piazzi multiple sul calcio e gestisci cassa e bonus dal telefono, la versione mobile ti basta e avanza. Chi invece vive di live con streaming e avvisi in tempo reale sull&#x27;esito di ogni gol, qui sta stretto — ma il limite è della piattaforma nel suo insieme, il formato web app c&#x27;entra poco.</p>
+<h2>FAQ sull&#x27;app Skilljoy</h2>
+<details><summary>Esiste un&#x27;app Skilljoy da scaricare per Android o iPhone?</summary><p>No. Niente su Google Play né su App Store, e un APK ufficiale non è mai esistito. Si gioca dal browser del telefono, sul sito ottimizzato per mobile.</p></details>
+<details><summary>Ho trovato un APK su un sito esterno: posso installarlo?</summary><p>Lascia perdere. Non esistendo un&#x27;app ufficiale, qualsiasi APK con quel nome è sospetto: rischi malware o il furto delle credenziali del conto. L&#x27;unico canale sicuro è il sito dal browser.</p></details>
+<details><summary>Come metto il sito sulla schermata Home del telefono?</summary><p>Su iPhone apri la pagina da Safari, tocchi Condividi e poi &quot;Aggiungi alla schermata Home&quot;. Su Android apri Chrome, menu ⋮ e &quot;Aggiungi a schermata Home&quot;. Ottieni un&#x27;icona che lancia il sito con un tocco, in molti casi senza barra del browser.</p></details>
+<details><summary>La versione mobile è legale in Italia?</summary><p>Sì. La piattaforma opera come skin di BGame con Concessione ADM n° 15252: gioco legale, conto in euro, tutele previste dalla normativa italiana. Accesso solo ai maggiorenni e solo dal territorio italiano.</p></details>
+<details><summary>Posso depositare e prelevare dallo smartphone?</summary><p>Sì, la cassa mobile è completa: PostePay, Skrill, Neteller, Rapid Transfer, bonifico e Onshop, con carte Wise, Revolut e Hype accettate. Deposito minimo 10 €, richieste di prelievo elaborate in circa 48 ore (fino a 4-5 giorni se il KYC è in corso), massimale dichiarato 5.000 € al giorno, più i tempi di accredito del circuito che scegli.</p></details>
+<details><summary>Serve un codice bonus per l&#x27;offerta di benvenuto?</summary><p>No, nessun codice: le promozioni si agganciano al conto in fase di registrazione. Il bonus multipla arriva fino al 130% con schedine da almeno 5 eventi a quota minima 1.20.</p></details>
+<details><summary>C&#x27;è lo streaming delle partite da mobile?</summary><p>No, il video è assente sia nella sezione live sia nella live suite. Le scommesse in-play si seguono con statistiche e grafiche in tempo reale, e il consumo dati resta bassissimo.</p></details>
+<details><summary>Il login con Face ID o impronta funziona?</summary><p>Non in modo nativo. Però salvando le credenziali nel gestore password di Safari o Chrome lo sblocco passa dalla biometria del dispositivo, quindi il risultato che ottieni è lo stesso.</p></details>
+<details><summary>Ci sono giochi di abilità come Briscola o Burraco?</summary><p>Non nella forma dei tornei di carte. I giochi di abilità sono quelli in cui le tue scelte incidono sul risultato, mentre qui la componente skill si limita ai titoli arcade skill-based; il resto dell&#x27;offerta è scommesse sportive, slot e tavoli live.</p></details>
+<details><summary>&quot;Skilljoy&quot; che trovo sugli store è la stessa cosa?</summary><p>No. SkillJoy.org è una piattaforma di corsi gratuiti, skilljoy.me un servizio link-in-bio per creator, e lo sviluppatore omonimo sull&#x27;Amazon Appstore pubblica giochini mobile che col betting non c&#x27;entrano niente. Il bookmaker con licenza ADM non ha app su nessuno store.</p></details>
+<details><summary>Cosa faccio se il sito non è più raggiungibile?</summary><p>Alcune fonti segnalano una possibile chiusura della piattaforma. In quel caso il riferimento è il concessionario BGame, Concessione ADM n° 15252: la normativa italiana tutela il saldo dei giocatori anche quando una skin cessa l&#x27;attività, e la richiesta di rimborso va presentata al titolare della licenza.</p></details>
+  </article>
+  <div class="clusterFoot"><a href="/">Home</a><a href="/bonus/">Bonus</a><a href="/scommesse/">Scommesse</a><a href="/casino/">Casinò</a><a href="/accesso/">Accesso</a><a href="/app/">App</a><a href="/recensioni/">Recensioni</a></div>
+</div>
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-cols">
+      <div>
+        <h4>Gioco</h4>
+        <ul>
+          <li><a href="/scommesse/">Scommesse sportive</a></li>
+          <li><a href="/casino/">Casinò e slot</a></li>
+          <li><a href="/bonus/">Promozioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Conto</h4>
+        <ul>
+          <li><a href="/accesso/">Accesso e registrazione</a></li>
+          <li><a href="/app/">Versione mobile</a></li>
+          <li><a href="/recensioni/">Recensioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Assistenza</h4>
+        <ul>
+          <li>Helpdesk 0833913829</li>
+          <li>WhatsApp 3493365011</li>
+          <li><a href="/accesso/">Recupero password</a></li>
+          <li><a href="/recensioni/">Licenza e concessione</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Gioco responsabile</h4>
+        <ul>
+          <li><a href="https://www.adm.gov.it/" rel="nofollow noopener" target="_blank">ADM</a></li>
+          <li><a href="https://www.iss.it/telefono-verde-per-le-problematiche-legate-al-gioco-d-azzardo" rel="nofollow noopener" target="_blank">Telefono Verde 800 558822</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="age">18+</div>
+      <p>Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca responsabilmente.
+      Skilljoy era un marchio operante con concessione ADM come skin di BGame (concessione n° 15252); il sito
+      di gioco non risulta più attivo. Questo sito è una risorsa informativa indipendente e non è il portale
+      ufficiale dell'operatore. Le quote e gli importi mostrati sono indicativi.</p>
+    </div>
+  </div>
+</footer>
+<div class="stky" id="stky"><img src="/assets/n1bet-logo.svg" alt="N1 Bet"><div class="t"><b>N1 Bet · ONLINE</b><span>5.000€ + 200 giri gratis · score 4.6</span></div><a href="/referral-link?sub_id_1=N1">Gioca ora →</a></div><script>(function(){var e=document.getElementById("stky");addEventListener("scroll",function(){e.classList.toggle("show",scrollY>320)},{passive:true})})();</script>
+</body>
+</html>

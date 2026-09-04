@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skilljoy Italia: homepage, stato del sito e informazioni</title>
+<meta name="description" content="Skilljoy non è più raggiungibile: scopri cosa offriva la homepage italiana, come distinguerla dagli omonimi e come verificare la concessione ADM.">
+<link rel="canonical" href="https://skilljoycasinoit.com/">
+<link rel="alternate" hreflang="it-it" href="https://skilljoycasinoit.com/">
+<link rel="alternate" hreflang="x-default" href="https://skilljoycasinoit.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#c8102e; --red-d:#a30d25; --ink:#1a1a1a; --mut:#666;
+  --nav:#ececec; --line:#dcdcdc; --bg:#fff;
+}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#f4f4f4}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* ---------- header ---------- */
+.hd{background:#fff;border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:20px;min-height:74px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.logo img{height:44px;width:auto}
+.loginbar{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.loginbar .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.loginbar input{border:1px solid #bdbdbd;border-radius:3px;padding:8px 10px;font:14px inherit;width:150px;background:#fff}
+.loginbar input:focus{outline:2px solid rgba(200,16,46,.25);border-color:var(--red)}
+.btn-login{background:var(--red);color:#fff;border:0;border-radius:3px;padding:9px 26px;font:600 14px inherit;cursor:pointer}
+.btn-login:hover{background:var(--red-d)}
+.loginbar .rec{font-size:11.5px;color:var(--mut)}
+.loginbar .rec:hover{color:var(--red)}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:4px;padding:8px 10px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:#333;margin:4px 0}
+
+/* ---------- nav ---------- */
+.nav{background:var(--nav);border-bottom:1px solid var(--line)}
+.nav ul{display:flex;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:13px 10px;font:700 12px/1 inherit;letter-spacing:.3px;text-transform:uppercase;color:#2b2b2b;white-space:nowrap;border-bottom:3px solid transparent}
+.nav a:hover{color:var(--red)}
+.nav a.on{color:var(--red);border-bottom-color:var(--red)}
+
+/* ---------- hero slider ---------- */
+.hero{background:#fff;padding:18px 0 6px}
+.slider{position:relative;border-radius:8px;overflow:hidden;background:#000}
+.slides{display:flex;transition:transform .5s ease}
+.slides figure{flex:0 0 100%;position:relative}
+.slides img{width:100%;height:auto;aspect-ratio:1000/320;object-fit:cover}
+.slide-cap{position:absolute;left:0;bottom:0;right:0;padding:28px 26px 22px;
+  background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,0));color:#fff}
+.slide-cap b{display:block;font-size:26px;line-height:1.15;margin-bottom:4px}
+.slide-cap small{font-size:13px;color:#e2e2e2}
+.slide-cap .go{display:inline-block;margin-top:12px;background:var(--red);color:#fff;border-radius:4px;
+  padding:10px 22px;font-weight:700;font-size:14px}
+.slide-cap .go:hover{background:var(--red-d)}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:7px;justify-content:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer}
+.dots i.on{background:var(--red)}
+.arw{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:0;
+  width:36px;height:52px;font-size:20px;cursor:pointer}
+.arw.l{left:0;border-radius:0 4px 4px 0}
+.arw.r{right:0;border-radius:4px 0 0 4px}
+
+/* ---------- sections ---------- */
+.sec{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sec-h{background:var(--red);color:#fff;padding:11px 16px;font:700 13px/1 inherit;letter-spacing:.6px;
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.sec-h .more{margin-left:auto;font-size:11.5px;font-weight:600;opacity:.92;text-transform:none;letter-spacing:0}
+.sec-h .more:hover{opacity:1;text-decoration:underline}
+.sec-b{padding:16px}
+
+/* games grid */
+.games{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.game{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;position:relative;
+  transition:transform .15s,box-shadow .15s}
+.game:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.14)}
+.game img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.game .gname{padding:7px 8px;font-size:11.5px;font-weight:600;text-align:center;color:#333;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game .tag{position:absolute;top:6px;left:6px;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;
+  padding:3px 6px;border-radius:3px;letter-spacing:.4px}
+.game .ov{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;
+  gap:8px;opacity:0;transition:opacity .15s}
+.game:hover .ov{opacity:1}
+.game .ov a{background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:3px}
+.game .ov a.demo{background:#fff;color:#222}
+
+/* betting lines */
+.lines{width:100%;border-collapse:collapse;font-size:13.5px}
+.lines th{background:#f3f3f3;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.4px;
+  padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines td{padding:10px;border-bottom:1px solid #eee;vertical-align:middle}
+.lines .match{font-weight:600}
+.lines .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.odd{display:inline-flex;flex-direction:column;align-items:center;min-width:62px;border:1px solid var(--line);
+  border-radius:4px;padding:6px 4px;background:#fafafa;margin-right:6px}
+.odd small{font-size:10px;color:var(--mut)}
+.odd b{font-size:14px;color:var(--red)}
+.odd:hover{background:var(--red);border-color:var(--red)}
+.odd:hover small,.odd:hover b{color:#fff}
+.note{font-size:11.5px;color:var(--mut);margin-top:10px}
+
+/* promo cards */
+.promos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.promo{border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.promo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.promo .pb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.promo h3{font-size:15px}
+.promo p{font-size:13px;color:#555;flex:1}
+.promo .amt{font-size:22px;font-weight:800;color:var(--red);line-height:1.1}
+.promo .go{background:var(--red);color:#fff;text-align:center;border-radius:4px;padding:9px;font-weight:700;font-size:13.5px}
+.promo .go:hover{background:var(--red-d)}
+
+/* cluster nav cards */
+.gnav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gcard{border:1px solid var(--line);border-radius:6px;padding:14px;display:block;transition:border-color .15s,box-shadow .15s}
+.gcard:hover{border-color:var(--red);box-shadow:0 6px 14px rgba(0,0,0,.08)}
+.gcard b{display:block;font-size:14.5px;margin-bottom:4px;color:var(--red)}
+.gcard span{font-size:12.5px;color:#555}
+
+/* status notice */
+.notice{background:#fff6f6;border:1px solid #f0c9c9;border-left:4px solid var(--red);border-radius:5px;
+  padding:14px 16px;margin-top:14px;font-size:13.5px;color:#4a2a2a}
+.notice b{color:var(--red)}
+
+
+/* offer box + sticky */
+.offer{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#111;border-radius:6px;
+  padding:18px 22px;margin-top:14px;color:#fff}
+.offer .lg{background:#0a1018;border:1px solid #2a2a2a;border-radius:5px;padding:8px 12px;flex:none}
+.offer .lg img{height:28px;width:auto;object-fit:contain;display:block}
+.offer .tx{flex:1;min-width:230px}
+.offer .st{display:inline-block;font-size:11px;font-weight:800;color:#f0b429;
+  text-transform:uppercase;letter-spacing:.6px}
+.offer .fx{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.offer .fx span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+  padding:4px 11px;font-size:11.5px;color:#e6e6e6}
+.offer .nm{font-size:19px;font-weight:800;margin:4px 0 2px}
+.offer .bn{font-size:13.5px;color:#cfcfcf}
+.offer .bn b{color:#fff}
+.offer a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:800;font-size:14.5px;white-space:nowrap}
+.offer a:hover{background:var(--red-d)}
+.stky{position:fixed;left:50%;transform:translate(-50%,120%);bottom:16px;width:min(560px,calc(100% - 32px));
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);
+  display:flex;align-items:center;gap:12px;padding:10px 13px;z-index:60;transition:transform .25s ease}
+.stky.show{transform:translate(-50%,0)}
+.stky img{height:24px;width:auto;object-fit:contain;background:#111;border-radius:5px;padding:4px 6px;flex:none}
+.stky .t{flex:1;min-width:0;font-size:13px;line-height:1.3}
+.stky .t b{display:block;font-size:13.5px}
+.stky .t span{color:var(--mut);font-size:11.5px}
+.stky a{background:var(--red);color:#fff;border-radius:5px;padding:10px 18px;font-weight:800;font-size:13px;white-space:nowrap}
+@media(max-width:640px){
+  .stky{left:0;transform:translate(0,120%);bottom:0;width:100%;border-radius:10px 10px 0 0;border-left:none;border-right:none;border-bottom:none}
+  .stky.show{transform:translate(0,0)}
+  .stky .t span{display:none}
+  .offer{padding:16px}
+  .offer a{width:100%;text-align:center}
+}
+
+/* seo article */
+.seo{background:#fff;margin-top:14px;border:1px solid var(--line);border-radius:6px;padding:26px 24px;font-size:15px}
+.seo h1{font-size:25px;line-height:1.25;margin-bottom:14px}
+.seo h2{font-size:19px;margin:26px 0 10px;padding-top:4px}
+.seo h3{font-size:16px;margin:18px 0 8px}
+.seo p{margin-bottom:12px}
+.seo ul,.seo ol{padding-left:24px;margin-bottom:12px}
+.seo li{margin-bottom:5px}
+.seo a{color:var(--red);text-decoration:underline}
+.seo strong{font-weight:700}
+.seo table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.seo th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line)}
+.seo td{padding:9px 10px;border:1px solid var(--line)}
+.tblwrap{overflow-x:auto}
+.seo details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.seo summary{font-weight:600;cursor:pointer}
+.seo details p{margin:9px 0 0}
+.ximg{display:block;width:100%;max-width:620px;height:auto;margin:22px auto;border-radius:6px;
+  box-shadow:0 6px 18px rgba(0,0,0,.14)}
+
+/* cta box */
+.cta-box{background:#111;color:#fff;border-radius:6px;padding:20px 22px;margin:22px 0;display:flex;
+  align-items:center;gap:18px;flex-wrap:wrap}
+.cta-box p{margin:0;font-size:14px;color:#dcdcdc;flex:1;min-width:220px}
+.cta-box b{color:#fff;display:block;font-size:17px;margin-bottom:4px}
+.cta-box a{background:var(--red);color:#fff;border-radius:4px;padding:12px 26px;font-weight:700;white-space:nowrap}
+.cta-box a:hover{background:var(--red-d)}
+
+/* footer */
+.ft{background:#111;color:#9a9a9a;margin-top:22px;padding:28px 0 22px;font-size:12.5px}
+.ft-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:22px}
+.ft h4{color:#fff;font-size:12.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.ft ul{list-style:none}
+.ft li{margin-bottom:6px}
+.ft a:hover{color:#fff}
+.ft-bot{border-top:1px solid #2a2a2a;padding-top:16px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.age{border:2px solid var(--red);color:var(--red);border-radius:50%;width:38px;height:38px;display:flex;
+  align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.ft-bot p{flex:1;min-width:260px;line-height:1.5}
+
+@media(max-width:980px){
+  .games{grid-template-columns:repeat(4,1fr)}
+  .promos,.gnav{grid-template-columns:repeat(2,1fr)}
+  .ft-cols{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .hd .wrap{min-height:60px}
+  .logo img{height:36px}
+  .burger{display:block}
+  .loginbar{display:none;order:3;width:100%;align-items:stretch;margin-left:0}
+  .loginbar.open{display:flex}
+  .loginbar .row{justify-content:stretch}
+  .loginbar input{flex:1;width:auto;min-width:0}
+  .slide-cap{padding:16px 14px 14px}
+  .slide-cap b{font-size:17px}
+  .slide-cap small{font-size:11.5px}
+  .slide-cap .go{padding:8px 16px;font-size:13px;margin-top:8px}
+  .seo{padding:20px 16px}
+  .seo h1{font-size:21px}
+  .arw{display:none}
+}
+@media(max-width:560px){
+  .games{grid-template-columns:repeat(3,1fr)}
+  .promos,.gnav{grid-template-columns:1fr}
+  .game .gname{font-size:10.5px}
+}
+</style>
+<style>
+.subTop{background:#111;color:#fff;padding:22px 0}
+.subTop .crumb{font-size:12px;color:#a9a9a9;margin-bottom:7px}
+.subTop .crumb a{color:#fff;text-decoration:underline}
+.subTop h1{font-size:27px;line-height:1.2}
+.page{max-width:900px;margin:0 auto;padding:0 16px}
+.page-body{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 26px 22px;margin-top:14px}
+.page-body h2{font-size:20px;margin:26px 0 10px}
+.page-body h2:first-child{margin-top:0}
+.page-body h3{font-size:16.5px;margin:18px 0 8px}
+.page-body p{margin-bottom:12px}
+.page-body ul,.page-body ol{padding-left:24px;margin-bottom:12px}
+.page-body li{margin-bottom:5px}
+.page-body a{color:var(--red);text-decoration:underline}
+.page-body blockquote.note{background:#fff8e8;border-left:4px solid #e8a300;border-radius:5px;padding:13px 16px;margin:16px 0}
+.page-body blockquote.note p:last-child{margin-bottom:0}
+/* кнопки и блоки внутри статьи не наследуют стиль текстовой ссылки */
+.page-body .cta-box a,.page-body .ctamini a,.page-body .btnrow a,.page-body .bigbonus a,
+.page-body .mocklogin a,.page-body .lines2 a,.page-body .revmore summary{text-decoration:none}
+.page-body .cta-box a,.page-body .ctamini a,.page-body .bigbonus a{color:#fff}
+.page-body .bigbonus a{color:#111}
+.page-body .btnrow a{color:#333}
+.page-body .btnrow a:hover{color:#fff}
+.page-body .lines2 a{color:inherit}
+.page-body table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.page-body th{background:#f3f3f3;text-align:left;padding:9px 10px;border:1px solid var(--line);font-weight:700}
+.page-body td{padding:9px 10px;border:1px solid var(--line)}
+.page-body details{border:1px solid var(--line);border-radius:5px;padding:11px 14px;margin-bottom:8px}
+.page-body summary{font-weight:600;cursor:pointer}
+.page-body details p{margin:9px 0 0}
+.clusterFoot{display:flex;gap:9px 18px;flex-wrap:wrap;padding:16px 0 6px;margin-top:18px;border-top:1px solid var(--line)}
+.clusterFoot a{color:var(--red);font-weight:700;font-size:13px}
+/* ── тематические блоки ── */
+.bigbonus{display:flex;flex-wrap:wrap;align-items:center;gap:20px;background:linear-gradient(115deg,#111,#7d0c1d 55%,var(--red));
+  border-radius:8px;padding:24px 26px;color:#fff;margin:20px 0}
+.bigbonus .v{font-size:42px;font-weight:900;line-height:1}
+.bigbonus .v small{display:block;font-size:13px;font-weight:700;opacity:.88;margin-top:5px}
+.bigbonus .d{flex:1;min-width:210px;font-size:13.5px;opacity:.95}
+.bigbonus a{background:#fff;color:#111;border-radius:4px;padding:12px 24px;font-weight:800;font-size:14px;white-space:nowrap}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}
+.btnrow a{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 16px;font-size:13px;font-weight:700;color:#333}
+.btnrow a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.ctamini{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff6f6;border:1px solid #f0c9c9;
+  border-left:4px solid var(--red);border-radius:5px;padding:13px 16px;margin:18px 0;font-size:13.5px}
+.ctamini b{flex:1;min-width:200px}
+.ctamini a{background:var(--red);color:#fff;border-radius:4px;padding:9px 18px;font-weight:700;font-size:13px}
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0}
+.mgrid .g{position:relative;display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:#fff;transition:transform .15s,box-shadow .15s}
+.mgrid .g:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,.15)}
+.mgrid img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover}
+.mgrid .n{display:block;padding:6px 7px 1px;font-size:11px;font-weight:700;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#222}
+.mgrid .pr{display:block;padding:0 7px 7px;font-size:9.5px;text-align:center;color:#999;text-transform:uppercase;letter-spacing:.3px}
+.mgrid .tg{position:absolute;top:5px;left:5px;z-index:2;background:var(--red);color:#fff;font-size:9px;
+  font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.3px}
+.mgrid .ov{position:absolute;left:0;right:0;top:0;bottom:32px;background:rgba(0,0,0,.55);display:flex;
+  align-items:center;justify-content:center;gap:7px;opacity:0;transition:opacity .15s}
+.mgrid .g:hover .ov{opacity:1}
+.mgrid .ov .pl,.mgrid .ov .dm{background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:6px 11px;border-radius:3px}
+.mgrid .ov .dm{background:#fff;color:#222}
+.page-body .mgrid .g{text-decoration:none}
+.lines2{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0}
+.lines2 th{background:#f3f3f3;font-size:11px;text-transform:uppercase;letter-spacing:.4px;padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.lines2 td{padding:9px 10px;border-bottom:1px solid #eee}
+.lines2 .m{font-weight:600}
+.lines2 .lg{display:block;font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+.lines2 .o{display:inline-flex;flex-direction:column;align-items:center;min-width:58px;border:1px solid var(--line);
+  border-radius:4px;padding:5px 4px;background:#fafafa}
+.lines2 .o small{font-size:10px;color:var(--mut)}
+.lines2 .o b{font-size:13.5px;color:var(--red)}
+.lines2 .o:hover{background:var(--red);border-color:var(--red)}
+.lines2 .o:hover small,.lines2 .o:hover b{color:#fff}
+.mocklogin{position:relative;max-width:400px;margin:20px 0;border:1px solid var(--line);border-radius:8px;padding:22px;background:#fff}
+.mocklogin label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--mut);margin-bottom:5px}
+.mocklogin input{width:100%;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:12px;background:#f6f6f6;pointer-events:none}
+.mocklogin .sub{display:block;text-align:center;background:#bdbdbd;color:#fff;border-radius:4px;padding:11px;font-weight:800}
+.mocklogin .ovl{position:absolute;inset:0;background:rgba(255,255,255,.93);border-radius:8px;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px}
+.mocklogin .ovl b{color:var(--red);font-size:15px}
+.mocklogin .ovl span{font-size:12.5px;color:#555}
+.mocklogin .ovl a{background:var(--red);color:#fff;border-radius:4px;padding:10px 20px;font-weight:700;font-size:13px}
+.stores{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.store{flex:1;min-width:210px;background:#fafafa;border:1px dashed #cfcfcf;border-radius:6px;padding:13px 15px;
+  display:flex;align-items:center;gap:9px;font-size:13px;color:#555}
+.store .x{color:var(--red);font-weight:900}.store .v{color:#1e8a3c;font-weight:900}
+.ratebox{display:flex;gap:22px;flex-wrap:wrap;align-items:center;background:#fafafa;border:1px solid var(--line);
+  border-radius:8px;padding:20px 22px;margin:20px 0}
+.ratebox .big{text-align:center;min-width:120px}
+.ratebox .big .n{font-size:44px;font-weight:900;color:var(--red);line-height:1}
+.ratebox .big .st{color:#e8a300;font-size:17px;letter-spacing:2px}
+.ratebox .big .c{font-size:11.5px;color:var(--mut);margin-top:4px}
+.ratebox .bars{flex:1;min-width:240px;display:flex;flex-direction:column;gap:7px}
+.bar{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.bar span{width:130px;color:#555}
+.bar i{flex:1;height:7px;background:#e6e6e6;border-radius:4px;overflow:hidden;display:block}
+.bar i b{display:block;height:100%;background:var(--red)}
+.bar u{width:28px;text-align:right;text-decoration:none;font-weight:700;color:#333}
+.revs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+.rev{border:1px solid var(--line);border-radius:6px;padding:13px 15px;background:#fff}
+.rev .rt{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:5px}
+.rev .nm{font-weight:700;font-size:13.5px}
+.rev .st{color:#e8a300;font-size:12.5px;letter-spacing:1px}
+.rev p{font-size:13px;color:#555;margin:0}
+.rev .meta{font-size:11px;color:#999;margin-top:6px}
+.revmore{text-align:center;margin:10px 0 4px}
+.revmore summary{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:20px;padding:9px 20px;
+  font-weight:700;font-size:13px;cursor:pointer;color:#333}
+@media(max-width:920px){.mgrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.revs{grid-template-columns:1fr}.bigbonus .v{font-size:33px}.bar span{width:96px}}
+@media(max-width:560px){.mgrid{grid-template-columns:repeat(3,1fr)}.page-body{padding:20px 16px}.subTop h1{font-size:21px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://skilljoycasinoit.com/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Skilljoy è ancora attivo in Italia?", "acceptedAnswer": {"@type": "Answer", "text": "No. Alla data dell&#x27;ultimo aggiornamento il sito risulta chiuso e non raggiungibile, senza una home né un accesso funzionanti. Chi ha fondi residui su un conto scriva al concessionario BGame e, se non ottiene risposta, segnali il caso ad ADM."}}, {"@type": "Question", "name": "Quali sono i giochi di abilità e cosa sono gli skill game?", "acceptedAnswer": {"@type": "Answer", "text": "Sono titoli in cui il risultato dipende anche dalle scelte e dai tempi di reazione del giocatore, non solo dal generatore casuale come in una slot classica: pensa a tornei di carte tipo burraco o scala 40, oppure a formati arcade con obiettivi da centrare. Nella sezione skill/arcade della piattaforma i parametri erano dichiarati in scheda (RTP, volatilità, durata del round). Per l&#x27;esatta classificazione giuridica di quei titoli il riferimento resta il concessionario."}}, {"@type": "Question", "name": "Skilljoy era legale?", "acceptedAnswer": {"@type": "Answer", "text": "La sezione scommesse operava come skin di BGame con concessione ADM/AAMS n° 15252, numero verificabile nell&#x27;elenco pubblico dei concessionari. Per il periodo verificato non risultano segnalazioni di operatività fuori concessione; la copertura della licenza sull&#x27;intera offerta va confermata dal concessionario."}}, {"@type": "Question", "name": "Esisteva un codice bonus?", "acceptedAnswer": {"@type": "Answer", "text": "Nelle fasi verificate non è mai comparso: le promozioni si attivavano tramite link. Chi pubblica oggi &quot;codici Skilljoy&quot; sta scrivendo fantasia pura."}}, {"@type": "Question", "name": "SkillJoy.org è lo stesso sito?", "acceptedAnswer": {"@type": "Answer", "text": "No, è un portale educativo gratuito e con il gioco d&#x27;azzardo non ha nulla a che fare. Anche lo studio di giochi mobile che porta lo stesso nome è un soggetto a sé."}}, {"@type": "Question", "name": "C&#x27;era un&#x27;app da scaricare?", "acceptedAnswer": {"@type": "Answer", "text": "No, solo sito mobile via browser. Le app &quot;Skilljoy&quot; negli store appartengono allo sviluppatore omonimo e non c&#x27;entrano né con il casinò né con le scommesse."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Skilljoy", "url": "https://skilljoycasinoit.com/", "inLanguage": "it-IT"}</script>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/assets/logo-skilljoy.png" alt="Skilljoy" width="184" height="48"></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <form class="loginbar" id="loginbar" onsubmit="return false">
+      <div class="row">
+        <input type="text" placeholder="Username" aria-label="Username" autocomplete="off">
+        <input type="password" placeholder="Password" aria-label="Password" autocomplete="off">
+        <a class="btn-login" href="/referral-link">Login</a>
+      </div>
+      <a class="rec" href="/accesso/">Recupera Password</a>
+    </form>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <ul>
+      <li><a class="on" href="/">Home</a></li>
+      <li><a href="/scommesse/">Scommesse</a></li>
+      <li><a href="/scommesse/">Live</a></li>
+      <li><a href="/casino/">Casino</a></li>
+      <li><a href="/casino/">Casino Live</a></li>
+      <li><a href="/casino/">Sala VIP</a></li>
+      <li><a href="/casino/">Poker</a></li>
+      <li><a href="/casino/">Carte</a></li>
+      <li><a href="/casino/">Lotterie</a></li>
+      <li><a href="/scommesse/">Ippica</a></li>
+      <li><a href="/scommesse/">Virtuali</a></li>
+      <li><a href="/bonus/">Promozioni</a></li>
+      <li><a href="/app/">App</a></li>
+      <li><a href="/recensioni/">Recensioni</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="slider" id="slider">
+      <div class="slides" id="slides">
+        <figure>
+          <img src="/assets/banner-b1.jpg" alt="Slot e giri gratis" width="1400" height="448">
+          <figcaption class="slide-cap">
+            <b>Slot, giri gratis e jackpot</b>
+            <small>Centinaia di titoli dei provider più giocati in Italia, dal classico frutta ai megaways.</small>
+            <a class="go" href="/referral-link">Gioca ora</a>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/banner-b2.jpg" alt="Scommesse sportive" width="1400" height="448">
+          <figcaption class="slide-cap">
+            <b>Scommesse su calcio e live</b>
+            <small>Serie A, coppe europee e campionati minori con quote aggiornate e cash out.</small>
+            <a class="go" href="/referral-link">Vedi il palinsesto</a>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="/assets/banner-b3.jpg" alt="Casinò live" width="1400" height="448">
+          <figcaption class="slide-cap">
+            <b>Casinò live con croupier reali</b>
+            <small>Roulette, blackjack e game show in streaming HD, tavoli aperti 24 ore su 24.</small>
+            <a class="go" href="/referral-link">Entra al tavolo</a>
+          </figcaption>
+        </figure>
+      </div>
+      <button class="arw l" id="prev" aria-label="Precedente">‹</button>
+      <button class="arw r" id="next" aria-label="Successivo">›</button>
+      <div class="dots" id="dots"></div>
+    </div>
+
+    <div class="notice">
+      <b>Stato del sito:</b> il portale di gioco Skilljoy (skilljoy.it) risulta chiuso e non più raggiungibile.
+      Quello che vedi qui sotto descrive l'offerta com'era finché la piattaforma girava; per giocare oggi serve
+      un operatore attivo. <a href="/recensioni/" style="color:var(--red);text-decoration:underline">Leggi la scheda completa</a>.
+    </div>
+
+
+    <div class="offer">
+      <span class="lg"><img src="/assets/n1bet-logo.svg" alt="N1 Bet" width="90" height="26"></span>
+      <div class="tx">
+        <span class="st">Piattaforma consigliata per chi arrivava da Skilljoy</span>
+        <div class="nm">N1 Bet · sport e casinò</div>
+        <div class="bn">Benvenuto fino a <b>5.000€ + 200 giri gratis</b> · palinsesto calcio con live e cash out ·
+          oltre 5.000 slot e tavoli con croupier · registrazione e cassa funzionanti oggi</div>
+        <div class="fx"><span>★ 4.6/5 redazione</span><span>Conto in 3 minuti</span><span>Deposito da 10€</span></div>
+      </div>
+      <a href="/referral-link?sub_id_1=N1">Gioca ora →</a>
+    </div>
+
+    <section class="sec">
+      <div class="sec-h">Top Games <a class="more" href="/casino/">Vedi tutti i giochi »</a></div>
+      <div class="sec-b">
+        <div class="games" id="games"></div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">Scommesse · prossimi eventi <a class="more" href="/scommesse/">Tutto il palinsesto »</a></div>
+      <div class="sec-b">
+        <div class="tblwrap">
+          <table class="lines">
+            <thead><tr><th>Incontro</th><th>1</th><th>X</th><th>2</th></tr></thead>
+            <tbody id="lines"></tbody>
+          </table>
+        </div>
+        <p class="note">Quote indicative a scopo illustrativo: possono variare in qualsiasi momento presso l'operatore.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">Promozioni</div>
+      <div class="sec-b">
+        <div class="promos">
+          <div class="promo">
+            <img src="/assets/xtra-bonus.jpg" alt="Bonus multipla" width="1200" height="675">
+            <div class="pb">
+              <span class="amt">fino al 130%</span>
+              <h3>Bonus multipla sportiva</h3>
+              <p>La promo storica di Skilljoy: percentuale extra sulla vincita delle schedine multiple, in base al numero di eventi.</p>
+              <a class="go" href="/referral-link">Gioca ora</a>
+            </div>
+          </div>
+          <div class="promo">
+            <img src="/assets/xtra-casino.jpg" alt="Sala slot" width="1200" height="675">
+            <div class="pb">
+              <span class="amt">Slot &amp; VIP</span>
+              <h3>Sala giochi e Sala VIP</h3>
+              <p>Slot classiche, videoslot, carte e lotterie nella stessa sala, con una sezione riservata ai giocatori abituali.</p>
+              <a class="go" href="/referral-link">Gioca ora</a>
+            </div>
+          </div>
+          <div class="promo">
+            <img src="/assets/xtra-app.jpg" alt="Versione mobile" width="1200" height="675">
+            <div class="pb">
+              <span class="amt">Mobile</span>
+              <h3>Gioco da smartphone</h3>
+              <p>Nessuna app da scaricare: il sito si adatta allo schermo del telefono, con cassa e conto sempre a portata.</p>
+              <a class="go" href="/app/">Come funziona</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h">Guida Skilljoy</div>
+      <div class="sec-b">
+        <div class="gnav">
+          <a class="gcard" href="/bonus/"><b>Bonus e codice promozionale</b><span>Come funzionava la multipla fino al 130% e perché non serviva nessun codice.</span></a>
+          <a class="gcard" href="/scommesse/"><b>Scommesse sportive</b><span>Palinsesto calcio, mercati, quote e cosa fare con una schedina in sospeso.</span></a>
+          <a class="gcard" href="/casino/"><b>Casinò e giochi</b><span>Slot, tavoli, carte e lotterie della sala: com'era organizzata l'offerta.</span></a>
+          <a class="gcard" href="/accesso/"><b>Accesso e registrazione</b><span>Login, recupero password e cosa succede al conto di un sito chiuso.</span></a>
+          <a class="gcard" href="/app/"><b>App e versione mobile</b><span>Perché l'app non esiste e come si giocava dal browser del telefono.</span></a>
+          <a class="gcard" href="/recensioni/"><b>Recensioni e affidabilità</b><span>Licenza ADM, concessione, opinioni e valutazione complessiva.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <article class="seo" id="seo">
+<h1>Skilljoy: sito ufficiale e homepage in italiano</h1>
+<p><strong>Ultimo aggiornamento: data dell&#x27;ultima verifica indipendente.</strong> Alla data dell&#x27;ultimo aggiornamento il sito di gioco Skilljoy risulta chiuso e non più raggiungibile: non c&#x27;è una homepage attiva né un accesso funzionante all&#x27;area personale. Quello che leggi qui sotto descrive l&#x27;offerta com&#x27;era finché la piattaforma girava.</p>
+<p><strong>In breve:</strong></p>
+<ul><li>Piattaforma di gioco in italiano, conto e saldi interamente in EUR, riservata ai maggiorenni (18+)</li><li>Sezione scommesse come skin di BGame, concessione ADM/AAMS n° 15252</li><li>Bonus casinò storico: 100% fino a 300 € + 50 free spins</li><li>Nessuna app nativa da scaricare, solo sito da browser</li><li>Stato del sito: chiuso / non disponibile secondo verifiche indipendenti</li></ul>
+<p>Tre progetti diversi si chiamano Skilljoy, e senza mettere ordine subito la confusione è garantita. SkillJoy.org è un portale educativo internazionale con corsi gratuiti. Poi c&#x27;è uno studio di sviluppo che ha sfornato oltre 81 giochi mobile sugli store. E infine la piattaforma italiana con casinò e scommesse sportive, quella di cui si parla in questa pagina.</p>
+<h2>Stato attuale, login e fondi residui</h2>
+<p>Non esiste al momento una home Skilljoy raggiungibile, quindi nessun login funzionante: se un dominio ti si presenta come &quot;skilljoy it&quot; e chiede credenziali o un deposito, trattalo come sospetto e non inserire dati.</p>
+<p>Chi aveva un conto con saldo residuo dovrebbe rivolgersi al concessionario BGame, il soggetto titolare della concessione sotto cui girava la sezione scommesse. I riferimenti aggiornati per il contatto vanno verificati presso il concessionario stesso. Se dal concessionario non arriva risposta, il passo successivo sono i canali di reclamo presso ADM, che gestisce le controversie tra giocatori e operatori autorizzati.</p>
+<h2>Cos&#x27;è Skilljoy e a chi si rivolge il sito ufficiale</h2>
+<p>La piattaforma camminava su due gambe: casinò da un lato (slot, tavoli, live), scommesse sportive dall&#x27;altro. La parte betting girava come skin di BGame, concessionario con sede in via Enrico Fermi 24, Castel San Pietro Terme (BO), concessione ADM/AAMS n° 15252. Interfaccia in italiano, conto e saldi interamente in euro, porte chiuse ai minorenni.</p>
+<p>Il numero di concessione puoi controllarlo da solo nell&#x27;elenco pubblico dei concessionari sul sito ADM: resta il modo più rapido per capire se hai davanti un operatore autorizzato o un clone che riusa il nome per pescare depositi. Va detto che la documentazione pubblica collega BGame in modo esplicito alla parte scommesse; per la copertura esatta della concessione sull&#x27;intera offerta il riferimento resta il concessionario.</p>
+<h2>Homepage Skilljoy: struttura e sezioni principali</h2>
+<p>La home si apriva su tre percorsi: casinò, live, scommesse. In alto i blocchi promozionali, più sotto le vetrine tipo &quot;I migliori giochi&quot; e &quot;I nostri vincitori&quot;. Ricerca per titolo, filtri per provider e categoria, selettore lingua su italiano.</p>
+<p>Qui però c&#x27;era il dettaglio che serviva davvero in fase di scelta: ogni tile di gioco mostrava RTP, volatilità, puntata minima e massima e percentuale di contributo al wagering. Prima ancora di aprire una slot sapevi già se contribuiva al 100% allo sblocco del bonus o se — come i tavoli dal vivo, fermi allo 0% — sul rollover non spostava un centesimo.</p>
+<h2>Registrazione, verifica e accesso all&#x27;account</h2>
+<p>Le procedure descritte qui non sono più operative, dato che il sito non è raggiungibile. Restano utili a chi vuole ricostruire come funzionava il conto.</p>
+<p>La registrazione era dichiarata sotto i 2 minuti: email, password, dati anagrafici, valuta EUR, spunta sui termini, conferma via posta elettronica. Il KYC chiedeva un documento d&#x27;identità con foto e una prova di residenza, oltre a un metodo di pagamento intestato al titolare del conto, con approvazione tipica in 30-60 minuti.</p>
+<p>Per entrare bastavano email e password, con il classico link di recupero in caso di password smarrita. Oggi quel percorso non porta da nessuna parte: per qualsiasi questione legata al vecchio account il canale è il concessionario, non un modulo di login.</p>
+<h2>Catalogo giochi: slot, tavolo verde e live</h2>
+<p>Slot, tavoli (blackjack, roulette, baccarat) e casinò live con dealer reali, più la parte crash/instant. Sulle slot, RTP e volatilità stavano scritti in scheda, senza dover girare forum e database esterni per trovarli.</p>
+<p>La sezione skill/arcade era trasparente in modo quasi anomalo per il settore: RTP di default 96,2%, con modalità alternative al 95% e al 97%, volatilità media di base che saliva ad alta con impostazioni Hard o Turbo. Un round durava 8-12 secondi, 5-7 in Turbo, con puntate da 0,10 € a 50 €. Tutto ruotava attorno a un misuratore bonus: riempirlo fino al livello L3 accendeva cicli Turbo con moltiplicatori 2x-3x.</p>
+<p>Lato scommesse il palinsesto scendeva fino a Serie C e Serie D, e poi tennis, basket, pallavolo, baseball, ciclismo. Non mancavano i mercati &quot;spettacolo&quot;: Eurovision, Isola dei Famosi. Mercati standard, 1X2 con handicap e multiple in prima fila. Due assenze pesavano: niente streaming live e niente betting exchange. Chi arrivava da un exchange la differenza la sentiva al primo colpo.</p>
+<h2>Bonus di benvenuto, promozioni e codici promozionali</h2>
+<p>Condizioni storiche, non più attivabili:</p>
+<div class="tblwrap"><table><thead><tr><th>Promozione</th><th>Condizioni</th></tr></thead><tbody><tr><td>Welcome casinò</td><td>100% fino a 300 € + 50 free spins, giri validi 72 ore</td></tr><tr><td>Requisiti</td><td>wagering 35x, puntata max 5 € per giocata, 0,10 € per giro con bonus, validità 7 giorni</td></tr><tr><td>Contributo tavoli dal vivo</td><td>0% al wagering</td></tr><tr><td>Promo alternativa</td><td>350 giri gratuiti senza requisito di scommessa (Eye of Horus, Fishin&#x27; Frenzy)</td></tr><tr><td>Scommesse</td><td>bonus multipla fino al 130%, minimo 5 eventi a quota ≥ 1.20, 130% con 30 eventi</td></tr></tbody></table></div>
+<p>Dato che i tavoli live contribuivano zero, il rollover te lo macinavi sulle slot. Sul fronte scommesse la percentuale del bonus multipla cresceva a ogni selezione aggiunta, fino al tetto del 130%.</p>
+<p>Un codice promozionale Skilljoy non è risultato in circolazione in nessuna fase verificata: le offerte si agganciavano al link di attivazione. Se oggi un sito ti sventola un &quot;codice esclusivo&quot;, se l&#x27;è inventato per farti cliccare.</p>
+<h2>Pagamenti in euro: depositi, prelievi e tempistiche</h2>
+<p>Deposito minimo 10 €. Carte, bonifico bancario ed e-wallet reggevano il grosso del traffico. La sezione scommesse elencava Skrill, Neteller, bonifico, PostePay, Rapid Transfer e Onshop, e accettava anche carte Wise, Revolut e Hype: per come paga l&#x27;Italia, copertura più che decente.</p>
+<p>Sui prelievi il casinò dichiarava un massimo di 5.000 € al giorno, con elaborazione in 24 ore dopo la verifica dell&#x27;identità. Le scommesse viaggiavano su circa 48 ore, che diventavano 4-5 giorni quando il KYC chiedeva documenti aggiuntivi; un test indipendente ha visto i soldi arrivare in circa 2 giorni lavorativi. Conto, saldi, limiti e storico transazioni erano tutti in euro, senza conversioni di mezzo.</p>
+<h2>App mobile e compatibilità con i dispositivi</h2>
+<p>App scaricabile? Non c&#x27;era. Si giocava dal browser dello smartphone, con il sito ottimizzato per mobile. Occhio a non fare pasticci con gli oltre 81 titoli pubblicati dallo studio omonimo negli store: sono giochi arcade e con la piattaforma a soldi veri non condividono nulla oltre il nome.</p>
+<h2>Sicurezza, licenza e gioco responsabile</h2>
+<p>La copertura regolamentare arrivava dalla concessione ADM n° 15252 di BGame, con gli obblighi che ne derivano: conto unico, verifica dell&#x27;identità, protezione dei fondi. Gli strumenti di gioco responsabile erano cinque: limite di deposito, limite di perdita, timer di gioco, autoesclusione temporanea e permanente. Il gioco è vietato ai minori di 18 anni. Per chi si accorge che il gioco sta diventando un problema c&#x27;è il Telefono Verde nazionale 800 558822, gratuito e anonimo.</p>
+<h2>Assistenza clienti e contatti</h2>
+<p>Il canale principale era la live chat, con tempi di risposta dichiarati sotto il minuto. Sulle questioni formali il discorso cambia: reclami e contestazioni su saldi dopo la chiusura di una skin passano dal concessionario BGame e, se il concessionario non risolve, dai canali di reclamo presso ADM.</p>
+<h2>Domande frequenti su Skilljoy</h2>
+<details><summary>Skilljoy è ancora attivo in Italia?</summary><p>No. Alla data dell&#x27;ultimo aggiornamento il sito risulta chiuso e non raggiungibile, senza una home né un accesso funzionanti. Chi ha fondi residui su un conto scriva al concessionario BGame e, se non ottiene risposta, segnali il caso ad ADM.</p></details>
+<details><summary>Quali sono i giochi di abilità e cosa sono gli skill game?</summary><p>Sono titoli in cui il risultato dipende anche dalle scelte e dai tempi di reazione del giocatore, non solo dal generatore casuale come in una slot classica: pensa a tornei di carte tipo burraco o scala 40, oppure a formati arcade con obiettivi da centrare. Nella sezione skill/arcade della piattaforma i parametri erano dichiarati in scheda (RTP, volatilità, durata del round). Per l&#x27;esatta classificazione giuridica di quei titoli il riferimento resta il concessionario.</p></details>
+<details><summary>Skilljoy era legale?</summary><p>La sezione scommesse operava come skin di BGame con concessione ADM/AAMS n° 15252, numero verificabile nell&#x27;elenco pubblico dei concessionari. Per il periodo verificato non risultano segnalazioni di operatività fuori concessione; la copertura della licenza sull&#x27;intera offerta va confermata dal concessionario.</p></details>
+<details><summary>Esisteva un codice bonus?</summary><p>Nelle fasi verificate non è mai comparso: le promozioni si attivavano tramite link. Chi pubblica oggi &quot;codici Skilljoy&quot; sta scrivendo fantasia pura.</p></details>
+<details><summary>SkillJoy.org è lo stesso sito?</summary><p>No, è un portale educativo gratuito e con il gioco d&#x27;azzardo non ha nulla a che fare. Anche lo studio di giochi mobile che porta lo stesso nome è un soggetto a sé.</p></details>
+<details><summary>C&#x27;era un&#x27;app da scaricare?</summary><p>No, solo sito mobile via browser. Le app &quot;Skilljoy&quot; negli store appartengono allo sviluppatore omonimo e non c&#x27;entrano né con il casinò né con le scommesse.</p></details>
+<div class="cta-box"><p><b>Cerchi dove giocare adesso?</b> Se cerchi un operatore che risponda oggi, parti dalla scheda consigliata.</p><a href="/referral-link">Vai al casinò consigliato</a></div>
+</article>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-cols">
+      <div>
+        <h4>Gioco</h4>
+        <ul>
+          <li><a href="/scommesse/">Scommesse sportive</a></li>
+          <li><a href="/casino/">Casinò e slot</a></li>
+          <li><a href="/bonus/">Promozioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Conto</h4>
+        <ul>
+          <li><a href="/accesso/">Accesso e registrazione</a></li>
+          <li><a href="/app/">Versione mobile</a></li>
+          <li><a href="/recensioni/">Recensioni</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Assistenza</h4>
+        <ul>
+          <li>Helpdesk 0833913829</li>
+          <li>WhatsApp 3493365011</li>
+          <li><a href="/accesso/">Recupero password</a></li>
+          <li><a href="/recensioni/">Licenza e concessione</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Gioco responsabile</h4>
+        <ul>
+          <li><a href="https://www.adm.gov.it/" rel="nofollow noopener" target="_blank">ADM</a></li>
+          <li><a href="https://www.iss.it/telefono-verde-per-le-problematiche-legate-al-gioco-d-azzardo" rel="nofollow noopener" target="_blank">Telefono Verde 800 558822</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="age">18+</div>
+      <p>Il gioco è vietato ai minori di 18 anni e può causare dipendenza patologica. Gioca responsabilmente.
+      Skilljoy era un marchio operante con concessione ADM come skin di BGame (concessione n° 15252); il sito
+      di gioco non risulta più attivo. Questo sito è una risorsa informativa indipendente e non è il portale
+      ufficiale dell'operatore. Le quote e gli importi mostrati sono indicativi.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+var GAMES=[
+ {f:"vs5joker.png",n:"Joker's Jewels",t:"Hot"},
+ {f:"vs20fruitsw.png",n:"Sweet Bonanza",t:""},
+ {f:"vs20olympgate.png",n:"Gates of Olympus",t:"Top"},
+ {f:"vs20sugarrush.png",n:"Sugar Rush",t:""},
+ {f:"vs20doghouse.png",n:"The Dog House",t:""},
+ {f:"vs10bbbonanza.png",n:"Big Bass Bonanza",t:"Hot"},
+ {f:"vs20fruitparty.png",n:"Fruit Party",t:""},
+ {f:"vs20starlight.png",n:"Starlight Princess",t:""},
+ {f:"vs25pandagold.png",n:"Panda's Fortune",t:""},
+ {f:"vs20eightdragons.png",n:"8 Dragons",t:""},
+ {f:"vs243lions.png",n:"5 Lions",t:""},
+ {f:"vs10egyptcls.png",n:"Ancient Egypt",t:"Top"},
+ {f:"vs20rhino.png",n:"Great Rhino",t:""},
+ {f:"vs40wildwest.png",n:"Wild West Gold",t:""},
+ {f:"vs10bookoftut.png",n:"Book of Tut",t:""},
+ {f:"vs20gorilla.png",n:"Jungle Gorilla",t:""},
+ {f:"vs20fruitswx.png",n:"Sweet Bonanza 1000",t:"Nuovo"},
+ {f:"vs10wildtut.png",n:"Mysterious Egypt",t:""},
+ {f:"vs25wildspells.png",n:"Wild Spells",t:""},
+ {f:"vs20terrorv.png",n:"Cash Elevator",t:""},
+ {f:"vs20leprexmas.png",n:"Leprechaun Carol",t:""},
+ {f:"vs20chickdrop.png",n:"Chicken Drop",t:"Nuovo"},
+ {f:"vs10returndead.png",n:"Return of the Dead",t:""},
+ {f:"vs25vegas.png",n:"Vegas Nights",t:"Nuovo"},
+ {f:"vs20honey.png",n:"Honey Honey Honey",t:""},
+ {f:"vs20fparty2.png",n:"Fruit Party 2",t:""},
+ {f:"vs20swordofares.png",n:"Sword of Ares",t:"Hot"}
+];
+document.getElementById("games").innerHTML=GAMES.map(function(g){
+ return '<div class="game">'+(g.t?'<span class="tag">'+g.t+'</span>':'')+
+ '<img src="/assets/slots/'+g.f+'" alt="'+g.n+'" width="325" height="234" loading="lazy">'+
+ '<div class="ov"><a href="/referral-link">Gioca</a><a class="demo" href="/referral-link">Demo</a></div>'+
+ '<div class="gname">'+g.n+'</div></div>';
+}).join("");
+
+var LINES=[
+ {h:"Inter — Milan",l:"Serie A · 23 ago",o:[2.05,3.40,3.55]},
+ {h:"Juventus — Napoli",l:"Serie A · 23 ago",o:[2.35,3.25,3.10]},
+ {h:"Roma — Lazio",l:"Serie A · 24 ago",o:[2.15,3.30,3.40]},
+ {h:"Atalanta — Fiorentina",l:"Serie A · 24 ago",o:[1.90,3.55,4.00]},
+ {h:"Bologna — Torino",l:"Serie A · 25 ago",o:[2.00,3.30,3.90]}
+];
+document.getElementById("lines").innerHTML=LINES.map(function(m){
+ return '<tr><td class="match">'+m.h+'<span class="lg">'+m.l+'</span></td>'+
+ m.o.map(function(v,i){return '<td><a class="odd" href="/referral-link"><small>'+["1","X","2"][i]+
+ '</small><b>'+v.toFixed(2)+'</b></a></td>';}).join("")+'</tr>';
+}).join("");
+
+(function(){
+ var s=document.getElementById("slides"),d=document.getElementById("dots"),i=0,n=s.children.length,t;
+ for(var k=0;k<n;k++)d.innerHTML+='<i'+(k?'':' class="on"')+'></i>';
+ function go(x){i=(x+n)%n;s.style.transform="translateX("+(-i*100)+"%)";
+  [].forEach.call(d.children,function(e,j){e.className=j===i?"on":"";});}
+ [].forEach.call(d.children,function(e,j){e.onclick=function(){go(j);reset();};});
+ document.getElementById("prev").onclick=function(){go(i-1);reset();};
+ document.getElementById("next").onclick=function(){go(i+1);reset();};
+ function reset(){clearInterval(t);t=setInterval(function(){go(i+1);},6000);}
+ reset();
+})();
+
+document.getElementById("burger").onclick=function(){
+ document.getElementById("loginbar").classList.toggle("open");
+};
+</script>
+<div class="stky" id="stky"><img src="/assets/n1bet-logo.svg" alt="N1 Bet">
+<div class="t"><b>N1 Bet · ONLINE</b><span>5.000€ + 200 giri gratis · score 4.6</span></div>
+<a href="/referral-link?sub_id_1=N1">Gioca ora →</a></div>
+<script>(function(){var e=document.getElementById("stky");
+addEventListener("scroll",function(){e.classList.toggle("show",scrollY>320)},{passive:true})})();</script>
+</body>
+</html>
